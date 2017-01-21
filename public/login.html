@@ -34,7 +34,7 @@
         div.container#login-container{
             border:0.5px solid rgba(12, 12, 12, 0.69);
             border-radius: 10px;
-            width: 500px;
+            width: 90%;
             height: 350px;
             background-color: rgba(240, 248, 255, 0.11);
 
@@ -57,21 +57,26 @@
             bottom: 0;
             left: 0;
             overflow: hidden;
-            z-index: -100;;
+            z-index: -100;
         }
 
         @media (min-aspect-ratio: 16/9) {
             .fullscreen-bg__video {
                 height: 100%;
                 top: -100%;
+                width: 100%;
             }
         }
 
         @media (max-aspect-ratio: 16/9) {
             .fullscreen-bg__video {
-                width: 300%;
+                width: 400%;
                 left: -100%;
             }
+        }
+
+        video {
+            object-fit: fill;
         }
 
 
