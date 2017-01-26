@@ -3,5 +3,79 @@ input.form-control {
 }
 
 body {
-    padding-top: 36px;
+    padding-top: 80px;
+}
+
+.no-border {
+    border: 0;
+    box-shadow: none;
+}
+
+.padding-right{
+    padding-right: 70px;
+}
+
+.navbar-default{
+    background-color: #2b669a;
+}
+
+.white{
+    color:white;
+}
+
+.navbar-default .navbar-brand{
+    color: white;
+}
+
+.navbar-default .navbar-brand:hover {
+    color: white;
+}
+
+
+.container-fluid a{
+    text-decoration: none;
+}
+
+.a-margin-bottom{
+    margin-bottom: 20px;
+}
+
+.container-bottom-padding{
+    padding-bottom: 50px;
+}
+
+.container-top-padding{
+    padding-top: 50px;
+}
+
+.text-size-20px{
+    font-size: 20px;
+}
+
+.postion-config-brand{
+    padding-top: 17px;
+    font-size: 25px;
+    padding-left: 43px
+}
+
+.delete-button-config{
+    height:50px;
+    font-size: 20px;
+}
+
+.choose-widget-container-layout-config{
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.choose-widget-youtube-layout-config{
+    padding-bottom: 33px;
+}
+
+.input-form-layout-config{
+    height: 40px;
+}
+
+.upload-input-file-layout-config{
+    line-height: 0.5ex
 }
