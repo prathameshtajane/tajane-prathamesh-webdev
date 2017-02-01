@@ -163,3 +163,7 @@ iframe{
 .pt-navbar-height-config{
     height: 40px;
 }
+
+.pt-body-layout-config{
+    padding-bottom: 80px;
+}
