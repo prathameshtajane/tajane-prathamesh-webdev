@@ -3,22 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <title>WidgetEdit</title>
-    <link href="../css/bootstrap.css" rel="stylesheet">
+   <!--<link href="../css/bootstrap.css" rel="stylesheet"> -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
     <!-- <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"> -->
     <link href="../css/style.css" rel="stylesheet">
 </head>
 <body>
 <nav class="navbar navbar-default navbar-fixed-top background-color-blue text-size-20px">
     <div class="container-fluid">
-        <a class="navbar-text pull-left text-size-20px" href="#" >
+        <a class="navbar-text pull-left text-size-20px" href="widget-list.html" >
             <span class="glyphicon glyphicon-chevron-left white"></span>
         </a>
         <!-- <div class="navbar-header"> -->
-        <div class="navbar-brand white postion-config-brand">
+        <div class="navbar-brand white postion-config-brand pt-brand-header-font-config
+        pt-navbrand-config">
             Widget Edit
         </div>
         <!-- </div> -->
-        <a class="navbar-text pull-right" href="#">
+        <a class="navbar-text pull-right" href="widget-list.html">
             <span class="glyphicon glyphicon-ok pull-right white"></span>
         </a>
     </div>
@@ -36,11 +38,13 @@
 
 <div class="container-fluid container-bottom-padding">
     <label class="text-size-20px" for="Widget-size"> Size </label>
-    <input class="form-control text-size-20px input-form-layout-config" id="Widget-size" placeholder="Widget Size">
+    <input class="form-control text-size-20px input-form-layout-config" type="Number" id="Widget-size" placeholder="Widget Size">
 </div>
 
 <div class="container-fluid container-bottom-padding">
-    <button class="form-control btn-block btn-danger delete-button-config">Delete</button>
+    <a class="form-control btn-block btn-danger delete-button-config pt-text-align-center"
+       href="widget-list.html">
+        Delete</a>
 </div>
 <nav class="navbar navbar-default navbar-fixed-bottom ">
     <div class="container-fluid">
