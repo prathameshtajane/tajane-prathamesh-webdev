@@ -14,29 +14,67 @@
         <h1>Profile</h1>
 
         <form>
+
+            <div class="form-group">
+                <label for="username">UserID</label>
+                <input type="text"
+                       class="form-control"
+                       id="userid"
+                       placeholder="UserID"
+                       ng-model="model.userID">
+            </div>
+
             <div class="form-group">
                 <label for="username">Username</label>
-                <input type="text" class="form-control" id="username" placeholder="Username">
+                <input type="text"
+                       class="form-control"
+                       id="username"
+                       placeholder="Username"
+                       ng-model="model.username">
+            </div>
+
+            <div ng-show="model.error" class="alert alert-danger" role="alert">
+                {{model.emailerror}}
             </div>
             <div class="form-group">
                 <label for="email">Email address</label>
-                <input type="email" class="form-control" id="email"
-                       placeholder="Enter your email address">
+                <input type="email"
+                       class="form-control"
+                       id="email"
+                       placeholder="Enter your email address"
+                       ng-model="model.email">
+            </div>
+
+            <div ng-show="model.error" class="alert alert-danger" role="alert">
+                {{model.firstnameerror}}
             </div>
             <div class="form-group">
                 <label for="first-name">First Name</label>
-                <input type="text" class="form-control" id="first-name" placeholder="First Name">
+                <input type="text"
+                       class="form-control"
+                       id="first-name"
+                       placeholder="First Name"
+                       ng-model="model.Firstname">
+            </div>
+
+            <div ng-show="model.error" class="alert alert-danger" role="alert">
+                {{model.lastnameerror}}
             </div>
             <div class="form-group">
                 <label for="last-name">Last Name</label>
-                <input type="text" class="form-control" id="last-name" placeholder="Last Name">
+                <input type="text"
+                       class="form-control"
+                       id="last-name"
+                       placeholder="Last Name"
+                       ng-model="model.Lastname">
             </div>
+
         </form>
 
         <a class="btn btn-primary btn-block"
            href="../../website/templates/website-list.view.client.html">Websites</a>
         <a class="btn btn-danger  btn-block"
-           href="login.view.client.html">Logout</a>
+           href="#/login">Logout</a>
     </div>
 
 <nav class="navbar navbar-default navbar-fixed-bottom ">
