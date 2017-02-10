@@ -42,9 +42,9 @@
             "findUserById" : findUserById,
             "findUserByCredentails" : findUserByCredentails,
             "createUser" : createUser,
-            /*"findUserByUserName" : findUserByUserName*/
-            /*"updateUser" : updateUser,
-            "deleteUser" : deleteUser,*!/!*!/*/
+            "updateUser" : updateUser
+            /*"findUserByUserName" : findUserByUserName
+            "deleteUser" : deleteUser*/
         };
         return api;
         
@@ -78,6 +78,20 @@
                 var userInfo = users[usr];
                 if(users[usr]._id == uid){
                     return angular.copy(userInfo);
+                }
+            }
+            return null;
+        }
+
+        function updateUser(userid,user){
+            for(var usr in users){
+                if(userid === parseInt(users[usr]._id))
+                {
+                    var selectedIndex = usr;
+                    users[selectedIndex].email=user.email;
+                    users[selectedIndex].firstName=user.Firstname;
+                    users[selectedIndex].lastName=user.Lastname;
+                    return angular.copy(users[usr]);
                 }
             }
             return null;

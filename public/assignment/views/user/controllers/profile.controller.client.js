@@ -9,7 +9,9 @@
     function profileController($routeParams,$location,UserService) {
 
         var vm = this;
+        vm.UpdateUserInfo = UpdateUserInfo;
         var userId = $routeParams['uid'];
+
 
         function init() {
         }
@@ -17,33 +19,50 @@
 
         var storedUserInfo=UserService.findUserById(userId);
 
-        vm.userID = storedUserInfo._id;
-        vm.username = storedUserInfo.username;
-        vm.email = storedUserInfo.email;
-        vm.Firstname = storedUserInfo.firstName;
-        vm.Lastname = storedUserInfo.lastName;
+        vm.user={};
+        vm.user.userID = storedUserInfo._id;
+        vm.user.username = storedUserInfo.username;
+        vm.user.email = storedUserInfo.email;
+        vm.user.Firstname = storedUserInfo.firstName;
+        vm.user.Lastname = storedUserInfo.lastName;
 
-        /*if(storedUserInfo.email === "undefined")
+
+       /* if(typeof storedUserInfo.email === "undefined")
         {
             vm.emailerror="Please add Email Address";
         }
         else{
-            vm.email = storedUserInfo.email;
+            vm.user.email = storedUserInfo.email;
         }
-        if(storedUserInfo.firstName === "undefined"){
+
+        if(typeof storedUserInfo.firstName === "undefined"){
             vm.firstnameerror="Please add First Name";
         }
         else{
-        vm.Firstname = storedUserInfo.firstName;
+        vm.user.Firstname = storedUserInfo.firstName;
         }
-        if(storedUserInfo.lastName === "undefined"){
+        if(typeof storedUserInfo.lastName === "undefined"){
             vm.lastnameerror="Please add Last Name";
         }
         else{
-        vm.Lastname = storedUserInfo.lastName;
+        vm.user.Lastname = storedUserInfo.lastName;
         }*/
 
-
+       function UpdateUserInfo(user)
+       {
+        var UpdatedUserInfo=UserService.updateUser(parseInt(userId),user);
+        if(UpdatedUserInfo === null){
+            vm.error = "Failed to update recent request.";
+        }
+        else{
+            vm.user.userID = UpdatedUserInfo._id;
+            vm.user.username = UpdatedUserInfo.username;
+            vm.user.email = UpdatedUserInfo.email;
+            vm.user.Firstname = UpdatedUserInfo.firstName;
+            vm.user.Lastname = UpdatedUserInfo.lastName;
+            vm.success = "User Information Updation Succesfull";
+        }
+       }
 
     }
 
