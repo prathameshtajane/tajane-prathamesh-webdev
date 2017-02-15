@@ -9,7 +9,7 @@
             Pages
         </div>
         <!-- </div> -->
-        <a class="navbar-text pull-right" href="page-new.view.client.html">
+        <a class="navbar-text pull-right" href="#/user/{{model.userid}}/websites/{{model.websiteid}}/page/new">
             <span class="glyphicon glyphicon-plus pull-right white"></span>
         </a>
     </div>
@@ -17,57 +17,26 @@
 
 <div class="container-fluid ">
 
-    <div class="container-fluid container-bottom-padding container-top-padding ">
-    <a class="no-border a-margin-bottom text-size-20px" href="../../widget/templates/widget-list.view.client.html">
-        Blog Post
-        <a class="no-border a-margin-bottom text-size-20px" href="page-edit.view.client.html">
-            <span class="glyphicon glyphicon-cog pull-right "></span>
-        </a>
-    </a>
+
+    <div class="row a-margin-bottom"
+         ng-repeat="page in model.pagelist">
+        <div class="col-xs-10">
+            <a class="no-border a-margin-bottom"
+               href="">
+                {{page.name}}
+            </a>
+        </div>
+        <div class="col-xs-2">
+            <a href="#/user/{{model.userid}}/websites/{{model.websiteid}}/page/{{page._id}}">
+                <span class="glyphicon glyphicon-cog pull-right pt-cog-config-websitelist"></span>
+            </a>
+        </div>
     </div>
-
-    <div class="container-fluid container-bottom-padding">
-    <a class="no-border a-margin-bottom text-size-20px" href="../../widget/templates/widget-list.view.client.html">
-        Blogs
-        <a class="no-border a-margin-bottom text-size-20px" href="page-edit.view.client.html">
-            <span class="glyphicon glyphicon-cog pull-right "></span>
-        </a>
-    </a>
-    </div>
-
-    <div class="container-fluid container-bottom-padding">
-    <a class="no-border a-margin-bottom text-size-20px" href="../../widget/templates/widget-list.view.client.html">
-        Home
-        <a class="no-border a-margin-bottom text-size-20px" href="page-edit.view.client.html">
-            <span class="glyphicon glyphicon-cog pull-right "></span>
-        </a>
-    </a>
-    </div>
-
-    <div class="container-fluid container-bottom-padding">
-    <a class="no-border a-margin-bottom text-size-20px" href="../../widget/templates/widget-list.view.client.html">
-        About
-        <a class="no-border a-margin-bottom text-size-20px" href="page-edit.view.client.html">
-            <span class="glyphicon glyphicon-cog pull-right "></span>
-        </a>
-    </a>
-    </div>
-
-
-    <div class="container-fluid container-bottom-padding">
-    <a class="no-border a-margin-bottom text-size-20px" href="../../widget/templates/widget-list.view.client.html">
-        Contact Us
-        <a class="no-border a-margin-bottom text-size-20px" href="page-edit.view.client.html">
-            <span class="glyphicon glyphicon-cog pull-right "></span>
-        </a>
-    </a>
-    </div>
-
 </div>
 
 <nav class="navbar navbar-default navbar-fixed-bottom text-size-20px">
     <div class="container-fluid">
-        <a class="navbar-text pull-right" href="../../views/user/templates/profile.view.client.html">
+        <a class="navbar-text pull-right" href="#/profile/{{model.userid}}">
             <span class="glyphicon glyphicon-user white"></span>
         </a>
     </div>

@@ -33,7 +33,23 @@
     <div class="rows container-fluid ">
         <div class="col-sm-4 hidden-sm hidden-xs">
 
-            <div class="container-fluid container-bottom-padding container-top-padding">
+            <div ng-repeat="website in model.websiteslist">
+                <div class="container-fluid container-bottom-padding container-top-padding">
+
+                    <a class="no-border a-margin-bottom text-size-20px"
+                       href="#/user/{{website.developerId}}/websites/{{website._id}}">
+                        {{website.name}}
+                    </a>
+
+                    <a class="no-border a-margin-bottom "
+                       href="#/user/{{website.developerId}}/websites/{{website._id}}">
+                    <span class="glyphicon glyphicon-cog pull-right
+                     website-new-layout-config"></span>
+                    </a>
+                </div>
+            </div>
+
+            <!--<div class="container-fluid container-bottom-padding container-top-padding">
             <a class="no-border a-margin-bottom text-size-20px" href="../../views/page/templates/page-list.view.client.html">
                 Blogging App
                 <a class="no-border a-margin-bottom " href="website-edit.view.client.html">
@@ -67,24 +83,49 @@
                     <span class="glyphicon glyphicon-cog pull-right website-new-layout-config"></span>
                 </a>
             </a>
-                </div>
+                </div>-->
         </div>
         <div class="col-sm-8">
+            <div ng-show="model.webcreatestat" class="alert alert-success" role="alert">
+                {{model.webcreatestat}}
+            </div>
+
             <div class="container-fluid container-bottom-padding container-top-padding">
-                <label class="text-size-20px" for="Website_name"> Name </label>
-                <input class="form-control text-size-20px" placeholder="Name" id="Website_name">
+                <label class="text-size-20px"
+                       for="Website_name">
+                    Name
+                </label>
+
+                <input class="form-control text-size-20px"
+                       placeholder="Name"
+                       id="Website_name"
+                       ng-model="model.newwebsite.name">
             </div>
 
             <div class="container-fluid container-bottom-padding">
-                <label class="text-size-20px" for="description"> Description </label>
-                <textarea class="form-control text-size-20px" rows="4" id="description" placeholder="Description"></textarea>
+                <label class="text-size-20px"
+                       for="description">
+                    Description
+                </label>
+                <textarea class="form-control text-size-20px"
+                          rows="4"
+                          id="description"
+                          placeholder="Description"
+                          ng-model="model.newwebsite.description">
+                </textarea>
+            </div>
+
+            <div class="container-fluid container-bottom-padding">
+                <a class="form-control btn-block btn-danger delete-button-config pt-text-align-center"
+                   ng-click="model.createWebsite(model.userid,model.newwebsite)">Create Website</a>
             </div>
         </div>
     </div>
 
     <nav class="navbar navbar-default navbar-fixed-bottom text-size-20px">
         <div class="container-fluid">
-            <a class="navbar-brand pull-right " href="../../views/user/templates/profile.view.client.html">
+            <a class="navbar-brand pull-right "
+               href="../../views/user/templates/profile.view.client.html">
                 <span class="glyphicon glyphicon-user white"></span>
             </a>
         </div>

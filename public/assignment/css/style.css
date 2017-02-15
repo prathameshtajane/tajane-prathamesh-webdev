@@ -110,6 +110,13 @@ iframe{
     padding-top: 9px;
     }
 
+.pt-cog-config-websitelist{
+    margin-right:-1px;
+    padding-top: 3px;
+    padding-right: 17px;
+}
+
+
 .img-responsive{
     margin-bottom: 15px;
 }

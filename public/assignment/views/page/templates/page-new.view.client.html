@@ -8,26 +8,51 @@
              pt-navbrand-config">
             New Page
         </div>
-        <!-- </div> -->
-        <a class="navbar-text pull-right" href="page-list.view.client.html">
+
+        <a class="navbar-text pull-right"
+           href="#/user/{{model.userid}}/websites/{{model.websiteid}}/page">
             <span class="glyphicon glyphicon-ok pull-right white"></span>
         </a>
     </div>
 </nav>
 
 <div class="container-fluid container-bottom-padding">
-    <label class="text-size-20px" for="Page_name"> Name </label>
-    <input class="form-control text-size-20px" placeholder="Page Name" id="Page_name">
+
+
+    <div ng-show="model.pagecreatestat" class="alert alert-success" role="alert">
+        {{model.pagecreatestat}}
+    </div>
+
+    <label class="text-size-20px"
+           for="Page_name">
+        Name
+    </label>
+
+    <input class="form-control text-size-20px"
+           placeholder="Page Name"
+           id="Page_name"
+           ng-model="model.newpage.name">
 </div>
 
 <div class="container-fluid container-bottom-padding">
-    <label class="text-size-20px" for="Page_title"> Title </label>
-    <input class="form-control text-size-20px" id="Page_title" placeholder="Page Title">
+    <label class="text-size-20px"
+           for="Page_title">
+        Title
+    </label>
+    <input class="form-control text-size-20px"
+           id="Page_title"
+           placeholder="Page Title"
+           ng-model="model.newpage.title">
+</div>
+
+<div class="container-fluid container-bottom-padding">
+    <a class="form-control btn-block btn-danger delete-button-config pt-text-align-center"
+       ng-click="model.createPage(model.websiteid,model.newpage)">Create Website</a>
 </div>
 
 <nav class="navbar navbar-default navbar-fixed-bottom text-size-20px">
     <div class="container-fluid">
-        <a class="navbar-text pull-right" href="../../views/user/templates/profile.view.client.html">
+        <a class="navbar-text pull-right" href="#/profile/{{model.userid}}">
             <span class="glyphicon glyphicon-user white"></span>
         </a>
     </div>

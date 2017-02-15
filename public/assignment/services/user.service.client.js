@@ -42,9 +42,9 @@
             "findUserById" : findUserById,
             "findUserByCredentails" : findUserByCredentails,
             "createUser" : createUser,
-            "updateUser" : updateUser
-            /*"findUserByUserName" : findUserByUserName
-            "deleteUser" : deleteUser*/
+            "updateUser" : updateUser,
+            "findUserByUserName" : findUserByUserName,
+            "deleteUser" : deleteUser
         };
         return api;
         
@@ -95,6 +95,24 @@
                 }
             }
             return null;
+        }
+
+        function findUserByUserName(inp_username){
+            for(var usr in users){
+                if(usr.username === inp_username){
+                    return usr;
+                }
+            }
+            return null;
+        }
+
+        function deleteUser(userid){
+            for(var usr in users){
+                if (usr._id === userid){
+                    var index_tobe_deleted=users.indexOf(usr);
+                    users.splice(index_tobe_deleted,1);
+                }
+            }
         }
 
     }
