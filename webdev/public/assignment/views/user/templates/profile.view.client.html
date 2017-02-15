@@ -1,0 +1,102 @@
+
+<nav class="navbar navbar-default navbar-fixed-top text-size-20px">
+    <div class="container-fluid">
+        <div class="navbar-brand white position-config-brand pt-brand-header-font-config">
+            Profile
+        </div>
+        <a class="navbar-text pull-right btn"
+           href
+           ng-click="model.UpdateUserInfo(model.user)">
+            <span class="glyphicon glyphicon-ok pull-right white"></span>
+        </a>
+    </div>
+</nav>
+
+    <div class="container-fluid">
+        <h1>Profile</h1>
+
+        <div ng-show="model.error"
+             class="alert alert-danger"
+             role="alert">
+            {{model.error}}
+        </div>
+
+        <div ng-show="model.success"
+             class="alert alert-success"
+             role="alert">
+            {{model.success}}
+        </div>
+
+        <form>
+            <div class="form-group">
+                <label for="username">UserID</label>
+                <input type="text"
+                       class="form-control"
+                       id="userid"
+                       placeholder="UserID"
+                       ng-model="model.user.userID"
+                       readonly>
+            </div>
+
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text"
+                       class="form-control"
+                       id="username"
+                       placeholder="Username"
+                       ng-model="model.user.username"
+                       readonly>
+            </div>
+
+            <div ng-show="model.emailerror" class="alert alert-danger" role="alert">
+                {{model.emailerror}}
+            </div>
+            <div class="form-group">
+                <label for="email">Email address</label>
+                <input type="email"
+                       class="form-control"
+                       id="email"
+                       placeholder="Enter your email address"
+                       ng-model="model.user.email">
+            </div>
+
+            <div ng-show="model.firstnameerror" class="alert alert-danger" role="alert">
+                {{model.firstnameerror}}
+            </div>
+            <div class="form-group">
+                <label for="first-name">First Name</label>
+                <input type="text"
+                       class="form-control"
+                       id="first-name"
+                       placeholder="First Name"
+                       ng-model="model.user.Firstname">
+            </div>
+
+            <div ng-show="model.lastnameerror" class="alert alert-danger" role="alert">
+                {{model.lastnameerror}}
+            </div>
+            <div class="form-group">
+                <label for="last-name">Last Name</label>
+                <input type="text"
+                       class="form-control"
+                       id="last-name"
+                       placeholder="Last Name"
+                       ng-model="model.user.Lastname">
+            </div>
+
+        </form>
+        <a class="btn btn-primary btn-block"
+           href="#/user/{{model.user.userID}}/websites">
+            Websites</a>
+
+        <a class="btn btn-danger  btn-block"
+           href="#/login">Logout</a>
+    </div>
+
+<nav class="navbar navbar-default navbar-fixed-bottom ">
+    <div class="container-fluid">
+        <a class="navbar-text pull-right" href="profile.view.client.html">
+            <span class="glyphicon glyphicon-user white"></span>
+        </a>
+    </div>
+</nav>

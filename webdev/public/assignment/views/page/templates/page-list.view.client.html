@@ -1,0 +1,43 @@
+<nav class="navbar navbar-default navbar-fixed-top background-color-blue text-size-20px">
+    <div class="container-fluid">
+        <a class="navbar-text pull-left text-size-20px" href="../../website/templates/website-list.view.client.html" >
+            <span class="glyphicon glyphicon-chevron-left white"></span>
+        </a>
+        <!-- <div class="navbar-header"> -->
+        <div class="navbar-brand white postion-config-brand pt-brand-header-font-config
+        pt-navbrand-config">
+            Pages
+        </div>
+        <!-- </div> -->
+        <a class="navbar-text pull-right" href="#/user/{{model.userid}}/websites/{{model.websiteid}}/page/new">
+            <span class="glyphicon glyphicon-plus pull-right white"></span>
+        </a>
+    </div>
+</nav>
+
+<div class="container-fluid ">
+
+
+    <div class="row a-margin-bottom"
+         ng-repeat="page in model.pagelist">
+        <div class="col-xs-10">
+            <a class="no-border a-margin-bottom"
+               href="">
+                {{page.name}}
+            </a>
+        </div>
+        <div class="col-xs-2">
+            <a href="#/user/{{model.userid}}/websites/{{model.websiteid}}/page/{{page._id}}">
+                <span class="glyphicon glyphicon-cog pull-right pt-cog-config-websitelist"></span>
+            </a>
+        </div>
+    </div>
+</div>
+
+<nav class="navbar navbar-default navbar-fixed-bottom text-size-20px">
+    <div class="container-fluid">
+        <a class="navbar-text pull-right" href="#/profile/{{model.userid}}">
+            <span class="glyphicon glyphicon-user white"></span>
+        </a>
+    </div>
+</nav>

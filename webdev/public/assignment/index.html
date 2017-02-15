@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="WebAppMaker">
+<head>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular-route.min.js"></script>-->
+
+    <script src="../js/angular.js"></script>
+    <script src="../js/angular-route.js"></script>
+
+    <script src="app.js"></script>
+    <script src="config.js"></script>
+
+    <script src="views/user/controllers/login.controller.client.js"></script>
+    <script src="views/user/controllers/register.controller.client.js"></script>
+    <script src="views/user/controllers/profile.controller.client.js"></script>
+
+    <script src="views/website/controllers/website.controller.client.js"></script>
+    <script src="views/website/controllers/websiteEdit.controller.client.js"></script>
+    <script src="views/website/controllers/websiteNew.controller.client.js"></script>
+
+    <script src="views/page/controllers/pageedit.controller.client.js"></script>
+    <script src="views/page/controllers/pagelist.controller.client.js"></script>
+    <script src="views/page/controllers/pagenew.controller.client.js"></script>
+
+
+    <script src="services/user.service.client.js"></script>
+    <script src="services/website.service.client.js"></script>
+    <script src="services/page.service.client.js"></script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <title>SinglePageApp</title>
+</head>
+<body>
+    <!--<h1>Index Page</h1>-->
+    <div ng-view></div>
+
+</body>
+</html>

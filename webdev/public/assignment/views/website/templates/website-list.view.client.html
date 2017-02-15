@@ -1,0 +1,103 @@
+ <nav class="navbar navbar-default navbar-fixed-top background-color-blue">
+
+        <div class="row">
+            <div class="col-xs-10">
+            <a class="navbar-brand pull-left" href="../../views/user/templates/profile.view.client.html">
+                <span class="glyphicon glyphicon-chevron-left white"></span>
+            </a>
+                <div class="navbar-brand white pt-brand-header-font-config">
+                    Websites
+                </div>
+            </div>
+
+            <div class="col-xs-2">
+            <a class="pull-right navbar-brand"
+               href="#/user/{{model.userid}}/websites/new">
+                <span class="glyphicon
+                glyphicon-plus pull-right white
+                pt-plus-glyph-padding"></span>
+            </a>
+            </div>
+        </div>
+    </nav>
+
+
+    <div class="container-fluid ">
+
+        <div class="row a-margin-bottom"
+             ng-repeat="website in model.websiteslist">
+
+            <div class="col-xs-10">
+                <a class="no-border a-margin-bottom"
+                   href="#/user/{{model.userid}}/websites/{{website._id}}/page">
+                    {{website.name}}
+                </a>
+            </div>
+            <div class="col-xs-2">
+                <a href="#/user/{{website.developerId}}/websites/{{website._id}}">
+                    <span class="glyphicon glyphicon-cog pull-right pt-cog-config-websitelist"></span>
+                </a>
+            </div>
+        </div>
+
+<!--
+       <div class="row a-margin-bottom">
+           <div class="col-xs-10">
+                <a class="no-border a-margin-bottom" href="../../views/page/templates/page-list.view.client.html">
+                Address Book App</a>
+           </div>
+           <div class="col-xs-2">
+                <a href="website-edit.view.client.html">
+                    <span class="glyphicon glyphicon-cog pull-right pt-cog-config-websitelist"></span>
+                </a>
+           </div>
+       </div>
+
+        <div class="row a-margin-bottom">
+            <div class="col-xs-10">
+                <a class="no-border a-margin-bottom"
+                href="../../views/page/templates/page-list.view.client.html">
+                    Blogger</a>
+            </div>
+            <div class="col-xs-2">
+                <a href="website-edit.view.client.html"><span class="glyphicon glyphicon-cog pull-right pt-cog-config"></span>
+                </a>
+            </div>
+        </div>
+
+        <div class="row a-margin-bottom">
+            <div class="col-xs-10">
+                <a class="no-border a-margin-bottom" href="../../views/page/templates/page-list.view.client.html">
+                    Blogging App</a>
+            </div>
+            <div class="col-xs-2">
+                <a href="website-edit.view.client.html">
+                    <span class="glyphicon glyphicon-cog pull-right pt-cog-config"></span>
+                </a>
+            </div>
+        </div>
+
+        <div class="row a-margin-bottom">
+            <div class="col-xs-10">
+                <a class="no-border a-margin-bottom" href="../../views/page/templates/page-list.view.client.html">
+                    Script Testing App</a>
+            </div>
+            <div class="col-xs-2">
+                <a href="website-edit.view.client.html">
+                    <span class="glyphicon glyphicon-cog pull-right pt-cog-config"></span>
+                </a>
+            </div>
+        </div>-->
+
+ </div>
+
+
+    <nav class="navbar navbar-default navbar-fixed-bottom">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xs-2 pull-right">
+                <a class="navbar-brand pull-right" href="../../views/user/templates/profile.view.client.html">
+                    <span class="glyphicon glyphicon-user white"></span>
+                </a></div></div>
+        </div>
+    </nav>

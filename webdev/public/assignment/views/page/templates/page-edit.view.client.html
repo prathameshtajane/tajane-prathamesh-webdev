@@ -1,0 +1,65 @@
+<nav class="navbar navbar-default navbar-fixed-top background-color-blue text-size-20px">
+    <div class="container-fluid">
+        <a class="navbar-text pull-left text-size-20px" href="page-list.view.client.html" >
+            <span class="glyphicon glyphicon-chevron-left white"></span>
+        </a>
+        <!-- <div class="navbar-header"> -->
+        <div class="navbar-brand white postion-config-brand pt-brand-header-font-config pt-navbrand-config">
+            Edit Page
+        </div>
+        <!-- </div> -->
+        <a class="navbar-text pull-right"
+           href="#/user/{{model.userid}}/websites/{{model.websiteid}}/page">
+            <span class="glyphicon glyphicon-ok pull-right white"></span>
+        </a>
+    </div>
+</nav>
+
+<div class="container-fluid container-bottom-padding">
+
+    <div ng-show="model.PageUpdationStatus" class="alert alert-success" role="alert">
+        {{model.PageUpdationStatus}}
+    </div>
+
+
+    <label class="text-size-20px"
+           for="Page_name"> Name </label>
+    <input class="form-control text-size-20px"
+           placeholder="Page Name"
+           ng-model="model.pageName.name"
+           id="Page_name">
+</div>
+
+<div class="container-fluid container-bottom-padding">
+    <label class="text-size-20px"
+           for="Page_title"> Title </label>
+
+    <input class="form-control text-size-20px"
+           id="Page_title"
+           ng-model="model.pageName.title"
+           placeholder="Page Title">
+</div>
+
+<div class="container-fluid container-bottom-padding">
+    <a class="form-control btn-block btn-success delete-button-config pt-text-align-center"
+       ng-click="model.updatePage(model.pageName._id,model.pageName)">
+        Update
+    </a>
+</div>
+
+
+<div class="container-fluid container-bottom-padding">
+    <a class="form-control btn-block btn-danger delete-button-config pt-text-align-center"
+       ng-click="model.deletePage()">
+        Delete
+    </a>
+</div>
+
+<nav class="navbar navbar-default navbar-fixed-bottom ">
+    <div class="container-fluid">
+        <a class="navbar-text pull-right"
+           href="#/profile/{{model.userid}}">
+            <span class="glyphicon glyphicon-user white"></span>
+        </a>
+    </div>
+</nav>
