@@ -17,19 +17,18 @@
     </div>
 </nav>
 
-<div class="container-fluid ">
-
+<div class="container-fluid pt-top-padding-page-layout">
 
     <div class="row a-margin-bottom"
          ng-repeat="page in model.pagelist">
         <div class="col-xs-10">
-            <a class="no-border a-margin-bottom"
+            <a class="no-border a-margin-bottom pt-font23"
                href="#/user/{{model.userid}}/websites/{{model.websiteid}}/page/{{page._id}}/widget">
                 {{page.name}}
             </a>
         </div>
         <div class="col-xs-2">
-            <a href="#/user/{{model.userid}}/websites/{{model.websiteid}}/page/{{page._id}}">
+            <a class="pt-font23" href="#/user/{{model.userid}}/websites/{{model.websiteid}}/page/{{page._id}}">
                 <span class="glyphicon glyphicon-cog pull-right pt-cog-config-websitelist"></span>
             </a>
         </div>

@@ -29,13 +29,13 @@
              ng-repeat="website in model.websiteslist">
 
             <div class="col-xs-10">
-                <a class="no-border a-margin-bottom"
+                <a class="no-border a-margin-bottom pt-font23"
                    href="#/user/{{model.userid}}/websites/{{website._id}}/page">
                     {{website.name}}
                 </a>
             </div>
 
-            <div class="col-xs-2">
+            <div class="col-xs-2 pt-font23">
                 <a href="#/user/{{website.developerId}}/websites/{{website._id}}">
                     <span class="glyphicon glyphicon-cog pull-right pt-cog-config-websitelist"></span>
                 </a>
