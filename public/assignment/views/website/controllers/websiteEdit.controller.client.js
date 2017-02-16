@@ -10,33 +10,41 @@
             var vm = this;
             vm.userid = $routeParams['uid'];
             vm.websiteid = $routeParams['wid'];
+
             vm.updateWebsite=updateWebsite;
             vm.deleteWebsite=deleteWebsite;
 
-            function init() {
+            function init()
+            {
+                vm.websiteslist=WebsiteService.findWebsitesByUser(vm.userid);
+                vm.websitesEdit= WebsiteService.findWebsiteById(vm.websiteid);
+                vm.websiteName=angular.copy(vm.websitesEdit);
             }
             init();
 
-            vm.websiteslist=WebsiteService.findWebsitesByUser(vm.userid);
-            vm.websitesEdit= WebsiteService.findWebsiteById(vm.websiteid);
-            vm.websiteName=angular.copy(vm.websitesEdit);
 
-            function updateWebsite() {
+            function updateWebsite()
+            {
                 vm.status = WebsiteService.updateWebsite(vm.websiteName._id, vm.websiteName);
-                if (vm.status) {
+                if (vm.status)
+                {
                     vm.WebsiteUpdationStatus = "Website Updated Succesfully";
                 }
-                else {
+                else
+                {
                     vm.WebsiteUpdationStatus = "Website Updation Failed";
                 }
             }
 
-            function deleteWebsite(){
+            function deleteWebsite()
+            {
                 vm.status = WebsiteService.deleteWebsite(vm.websiteName._id);
-                if (vm.status) {
+                if (vm.status)
+                {
                     $location.url("/user/"+vm.userid+"/websites");
                 }
-                else {
+                else
+                {
                     vm.WebsiteUpdationStatus = "Website Deletion Failed";
                 }
             }

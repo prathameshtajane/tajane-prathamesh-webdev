@@ -94,7 +94,6 @@
                         break;
                     }
                 }
-
                     websites.splice(selectedIndex1,1);
                     return true;
                     /*if(websites.splice(selectedIndex1,1) != typeof(undefined){

@@ -1,13 +1,14 @@
 <nav class="navbar navbar-default navbar-fixed-top background-color-blue text-size-20px">
     <div class="container-fluid">
-        <a class="navbar-text pull-left text-size-20px" href="page-list.view.client.html" >
+        <a class="navbar-text pull-left text-size-20px"
+           href="#/user/{{model.userid}}/websites/{{model.websiteid}}/page">
             <span class="glyphicon glyphicon-chevron-left white"></span>
         </a>
-        <!-- <div class="navbar-header"> -->
+
         <div class="navbar-brand white postion-config-brand pt-brand-header-font-config pt-navbrand-config">
             Edit Page
         </div>
-        <!-- </div> -->
+
         <a class="navbar-text pull-right"
            href="#/user/{{model.userid}}/websites/{{model.websiteid}}/page">
             <span class="glyphicon glyphicon-ok pull-right white"></span>
@@ -17,7 +18,9 @@
 
 <div class="container-fluid container-bottom-padding">
 
-    <div ng-show="model.PageUpdationStatus" class="alert alert-success" role="alert">
+    <div ng-show="model.PageUpdationStatus"
+         class="alert alert-success"
+         role="alert">
         {{model.PageUpdationStatus}}
     </div>
 
@@ -52,6 +55,13 @@
     <a class="form-control btn-block btn-danger delete-button-config pt-text-align-center"
        ng-click="model.deletePage()">
         Delete
+    </a>
+</div>
+
+<div class="container-fluid container-bottom-padding">
+    <a class="form-control btn-block btn-primary delete-button-config pt-text-align-center"
+       href="#/user/{{model.userid}}/websites/{{model.websiteid}}/page">
+        Cancel
     </a>
 </div>
 

@@ -1,15 +1,17 @@
 <nav class="navbar navbar-default navbar-fixed-top background-color-blue text-size-20px">
     <div class="container-fluid">
-        <a class="navbar-text pull-left text-size-20px" href="../../website/templates/website-list.view.client.html" >
+        <a class="navbar-text pull-left text-size-20px"
+           href="#/user/{{model.userid}}/websites">
             <span class="glyphicon glyphicon-chevron-left white"></span>
         </a>
-        <!-- <div class="navbar-header"> -->
+
         <div class="navbar-brand white postion-config-brand pt-brand-header-font-config
         pt-navbrand-config">
             Pages
         </div>
-        <!-- </div> -->
-        <a class="navbar-text pull-right" href="#/user/{{model.userid}}/websites/{{model.websiteid}}/page/new">
+
+        <a class="navbar-text pull-right"
+           href="#/user/{{model.userid}}/websites/{{model.websiteid}}/page/new">
             <span class="glyphicon glyphicon-plus pull-right white"></span>
         </a>
     </div>
@@ -22,7 +24,7 @@
          ng-repeat="page in model.pagelist">
         <div class="col-xs-10">
             <a class="no-border a-margin-bottom"
-               href="">
+               href="#/user/{{model.userid}}/websites/{{model.websiteid}}/page/{{page._id}}/widget">
                 {{page.name}}
             </a>
         </div>
@@ -36,7 +38,8 @@
 
 <nav class="navbar navbar-default navbar-fixed-bottom text-size-20px">
     <div class="container-fluid">
-        <a class="navbar-text pull-right" href="#/profile/{{model.userid}}">
+        <a class="navbar-text pull-right"
+           href="#/profile/{{model.userid}}">
             <span class="glyphicon glyphicon-user white"></span>
         </a>
     </div>

@@ -9,15 +9,18 @@
     function profileController($routeParams,$location,UserService) {
 
         var vm = this;
-        vm.UpdateUserInfo = UpdateUserInfo;
         var userId = $routeParams['uid'];
 
+        vm.UpdateUserInfo = UpdateUserInfo;
+        vm.deleteUser = deleteUser;
 
         function init() {
+
         }
         init();
 
         var storedUserInfo=UserService.findUserById(userId);
+
 
         vm.user={};
         vm.user.userID = storedUserInfo._id;
@@ -62,6 +65,12 @@
             vm.user.Lastname = UpdatedUserInfo.lastName;
             vm.success = "User Information Updation Succesfull";
         }
+       }
+
+       function deleteUser(userid){
+           var userDeletionFlag=UserService.deleteUser(userid.userID);
+           $location.url('/login');
+
        }
 
     }

@@ -1,0 +1,31 @@
+
+<h2>HTML EDITOR</h2>
+<div class="container-fluid choose-widget-youtube-layout-config">
+    <label class="text-size-20px" for="widget_name"> Name </label>
+    <input class="form-control text-size-20px input-form-layout-config"
+           placeholder="Widget Name"
+           id="widget_name"
+           ng-model="model.widget.name">
+</div>
+
+<div class="container-fluid choose-widget-youtube-layout-config">
+    <label class="text-size-20px" for="Widget-text"> HTML Content </label>
+    <input class="form-control text-size-20px input-form-layout-config"
+           id="Widget-Text"
+           placeholder="Widget Text"
+           ng-model="model.widget.text">
+</div>
+
+<div class="container-fluid choose-widget-youtube-layout-config">
+    <a class="form-control btn-block btn-success delete-button-config pt-text-align-center"
+       href=""
+       ng-click="model.update(model.widget)">
+        Update</a>
+</div>
+
+<div class="container-fluid choose-widget-youtube-layout-config">
+    <a class="form-control btn-block btn-danger delete-button-config pt-text-align-center"
+       href=""
+       ng-click="model.deletewid()">
+        Delete</a>
+</div>

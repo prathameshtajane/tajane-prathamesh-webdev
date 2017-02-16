@@ -1,0 +1,63 @@
+<h2>IMAGE EDITOR</h2>
+
+<div class="choose-widget-youtube-layout-config">
+    <label class="text-size-20px"
+           for="widget_name"> Name </label>
+    <input class="form-control text-size-20px input-form-layout-config"
+           placeholder="Widget Name"
+           id="widget_name"
+            ng-model="model.widget.name">
+</div>
+
+<div class="choose-widget-youtube-layout-config">
+    <label class="text-size-20px"
+           for="Widget-text"> Text </label>
+    <input class="form-control text-size-20px input-form-layout-config"
+           id="Widget-Text"
+           placeholder="Widget Text"
+           ng-model="model.widget.text">
+</div>
+
+<div class="choose-widget-youtube-layout-config">
+    <label class="text-size-20px" for="Widget-url"> URL </label>
+    <input class="form-control text-size-20px input-form-layout-config"
+           type="url"
+           id="Widget-url"
+           placeholder="Widget URL"
+           ng-model="model.widget.url">
+</div>
+
+<div class="choose-widget-youtube-layout-config">
+    <label class="text-size-20px" for="Widget-width"> Width in % </label>
+    <input class="form-control text-size-20px input-form-layout-config"
+           type="number"
+           id="Widget-width"
+           placeholder="Widget Width in %"
+           ng-model="model.widget.width">
+</div>
+
+<div class="choose-widget-youtube-layout-config">
+    <label class="text-size-20px" for="upload_file"> Upload </label>
+
+    <input class="form-control text-size-20px input-form-layout-config upload-input-file-layout-config"
+           type="file"
+           id="upload_file">
+</div>
+
+<div class="choose-widget-youtube-layout-config">
+    <button class="form-control btn-block btn-success delete-button-config">Upload Image</button>
+</div>
+
+<div class="choose-widget-youtube-layout-config container-bottom-padding">
+    <a class="form-control btn-block btn-primary delete-button-config pt-text-align-center"
+       href=""
+       ng-click="model.update(model.widget)">
+        Update Image URL</a>
+</div>
+
+<div class="choose-widget-youtube-layout-config container-bottom-padding">
+    <a class="form-control btn-block btn-danger delete-button-config pt-text-align-center pt-imgbutton-bottom-margin"
+       href=""
+       ng-click="model.deletewid()">
+        Delete</a>
+</div>

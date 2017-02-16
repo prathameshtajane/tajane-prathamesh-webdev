@@ -89,7 +89,8 @@ iframe{
 }
 
 .choose-widget-youtube-layout-config{
-    padding-bottom: 33px;
+    /*padding-bottom: 33px;*/
+    padding-bottom: 15px;
 }
 
 .input-form-layout-config{
@@ -177,4 +178,16 @@ iframe{
 
 .pt-play-config{
 padding-right: 40px;
+}
+
+.pt-button-top-margin{
+    margin-top: 31px;
+}
+
+.pt-button-bottom-margin{
+    margin-bottom: -36px;
+}
+
+.pt-imgbutton-bottom-margin{
+    margin-bottom: 40px;
 }

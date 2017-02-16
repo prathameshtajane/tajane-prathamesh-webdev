@@ -48,12 +48,12 @@
             return api;
 
 
-        function createPage(websiteid,page){
-            page.websiteId=websiteid;
-            page._id=(new Date()).getTime();
-            pages.push(page);
-            return true;
-        }
+            function createPage(websiteid,page){
+                page.websiteId=websiteid;
+                page._id=(new Date()).getTime();
+                pages.push(page);
+                return true;
+            }
 
             function findPageByWebsiteId(websiteId){
                 var pages_of_website=[];
@@ -64,7 +64,6 @@
                 }
                 return pages_of_website;
             }
-
 
             function updatePage(pageid,updatedpage) {
                 for(num in pages){
@@ -79,37 +78,31 @@
                 return true;
             }
 
-        function findPageById(pageid){
-            for(var num in pages)
-            {
-                if(parseInt(pages[num]._id) === parseInt(pageid)){
-                    return angular.copy(pages[num]);
+            function findPageById(pageid){
+                for(var num in pages)
+                {
+                    if(parseInt(pages[num]._id) === parseInt(pageid)){
+                        return angular.copy(pages[num]);
+                    }
                 }
-            }
-            return null;
-        }
-
-
-        function deletePage(pageid){
-            for(num in pages) {
-                if (pages[num]._id === pageid) {
-                    var selectedIndex1 = pages.indexOf(pages[num]);
-                    break;
-                }
+                return null;
             }
 
-            pages.splice(selectedIndex1,1);
-            return true;
-            /*if(websites.splice(selectedIndex1,1) != typeof(undefined){
-             return true;
-             }
-             else{
-             return false;
-             }*/
-
-
-        }
-
+            function deletePage(pageid){
+                for(num in pages) {
+                    if (pages[num]._id === pageid) {
+                        var selectedIndex1 = pages.indexOf(pages[num]);
+                        break;
+                    }
+                }
+                pages.splice(selectedIndex1,1);
+                return true;
+                /*if(websites.splice(selectedIndex1,1) != typeof(undefined){
+                 return true;
+                 }
+                 else{
+                 return false;
+                 }*/
+            }
     }
-
 })();

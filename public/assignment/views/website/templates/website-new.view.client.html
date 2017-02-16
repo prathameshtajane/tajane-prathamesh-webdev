@@ -2,7 +2,8 @@
     <nav class="navbar navbar-default navbar-fixed-top pt-navbar-height-config">
 
         <div class="col-sm-1">
-            <a class="navbar-text pull-left text-size-20px" href="website-list.view.client.html" >
+            <a class="navbar-text pull-left text-size-20px"
+               href="#/user/{{model.userid}}/websites" >
                 <span class="glyphicon glyphicon-chevron-left white"></span>
             </a>
         </div>
@@ -14,7 +15,8 @@
                 Websites
             </div>
             </div>
-            <a class="navbar-text pull-right text-size-20px" href="#" >
+            <a class="navbar-text pull-right text-size-20px"
+               href="#/user/{{model.userid}}/websites/new" >
                 <span class="glyphicon glyphicon-plus white"></span>
             </a>
         </div>
@@ -24,7 +26,8 @@
                 New Website
             </div>
 
-            <a class="navbar-brand pull-right" href="website-list.view.client.html">
+            <a class="navbar-brand pull-right"
+               href="#/user/{{model.userid}}/websites">
                 <span class="glyphicon glyphicon-ok pull-right white"></span>
             </a>
         </div>
@@ -86,7 +89,9 @@
                 </div>-->
         </div>
         <div class="col-sm-8">
-            <div ng-show="model.webcreatestat" class="alert alert-success" role="alert">
+            <div ng-show="model.webcreatestat"
+                 class="alert alert-success"
+                 role="alert">
                 {{model.webcreatestat}}
             </div>
 
@@ -115,17 +120,27 @@
                 </textarea>
             </div>
 
+
+
+            <div class="container-fluid container-bottom-padding">
+                <a class="form-control btn-block btn-primary delete-button-config pt-text-align-center"
+                   ng-click="model.createWebsite(model.userid,model.newwebsite)">
+                    Create Website</a>
+            </div>
+
             <div class="container-fluid container-bottom-padding">
                 <a class="form-control btn-block btn-danger delete-button-config pt-text-align-center"
-                   ng-click="model.createWebsite(model.userid,model.newwebsite)">Create Website</a>
+                   href="#/user/{{model.userid}}/websites">
+                    Cancel</a>
             </div>
+
         </div>
     </div>
 
     <nav class="navbar navbar-default navbar-fixed-bottom text-size-20px">
         <div class="container-fluid">
             <a class="navbar-brand pull-right "
-               href="../../views/user/templates/profile.view.client.html">
+               href="#/profile/{{model.userid}}">
                 <span class="glyphicon glyphicon-user white"></span>
             </a>
         </div>

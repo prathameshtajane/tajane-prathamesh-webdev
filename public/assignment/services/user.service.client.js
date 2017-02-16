@@ -35,8 +35,7 @@
                 password: "jannunzi",
                 firstName: "Jose",
                 lastName: "Annunzi",
-                email:"jose@gmail.com" }
-        ]
+                email:"jose@gmail.com" }];
 
         var api = {
             "findUserById" : findUserById,
@@ -99,8 +98,8 @@
 
         function findUserByUserName(inp_username){
             for(var usr in users){
-                if(usr.username === inp_username){
-                    return usr;
+                if(users[usr].username === inp_username){
+                    return angular.copy(users[usr]);
                 }
             }
             return null;
@@ -108,9 +107,10 @@
 
         function deleteUser(userid){
             for(var usr in users){
-                if (usr._id === userid){
-                    var index_tobe_deleted=users.indexOf(usr);
+                if (parseInt(users[usr]._id) === parseInt(userid)){
+                    var index_tobe_deleted=users.indexOf(users[usr]);
                     users.splice(index_tobe_deleted,1);
+                    return true;
                 }
             }
         }

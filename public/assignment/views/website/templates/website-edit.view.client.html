@@ -2,7 +2,8 @@
 <nav class="navbar navbar-default navbar-fixed-top text-size-20px">
 
     <div class="col-sm-1">
-        <a class="navbar-text pull-left text-size-20px" href="website-list.view.client.html" >
+        <a class="navbar-text pull-left text-size-20px"
+           href="#/user/{{model.userid}}/websites" >
             <span class="glyphicon glyphicon-chevron-left white"></span>
         </a>
     </div>
@@ -27,7 +28,8 @@
         <div class="navbar-brand white position-config-brand">
             Edit Website
         </div>
-        <a class="navbar-text pull-right" href="website-list.view.client.html">
+        <a class="navbar-text pull-right"
+           href="#/user/{{model.userid}}/websites">
             <span class="glyphicon glyphicon-ok pull-right white"></span>
         </a>
         </div>
@@ -35,13 +37,14 @@
 </nav>
 
 <div class="rows container-fluid">
+
     <div class="col-sm-4 hidden-sm hidden-xs">
 
        <div ng-repeat="website in model.websiteslist">
         <div class="container-fluid container-bottom-padding container-top-padding">
 
             <a class="no-border a-margin-bottom text-size-20px"
-               href="/user/{{model.userid}}/websites/{{website._id}}/page">
+               href="#/user/{{website.developerId}}/websites/{{website._id}}">
                 {{website.name}}
             </a>
 
@@ -53,11 +56,14 @@
         </div>
        </div>
     </div>
+
     <div class="col-sm-8">
 
         <div class="container-fluid">
 
-        <div ng-show="model.WebsiteUpdationStatus" class="alert alert-success" role="alert">
+        <div ng-show="model.WebsiteUpdationStatus"
+             class="alert alert-success"
+             role="alert">
             {{model.WebsiteUpdationStatus}}
         </div>
 
@@ -100,7 +106,8 @@
 
 <nav class="navbar navbar-default navbar-fixed-bottom text-size-20px">
     <div class="container-fluid">
-        <a class="navbar-text pull-right " href="../../views/user/templates/profile.view.client.html">
+        <a class="navbar-text pull-right "
+           href="#/profile/{{model.userid}}">
             <span class="glyphicon glyphicon-user white"></span>
         </a>
     </div>

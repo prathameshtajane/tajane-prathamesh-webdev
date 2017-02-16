@@ -12,14 +12,15 @@
     </div>
 </nav>
 
-    <div class="container-fluid">
-        <h1>Profile</h1>
+<div class="container-fluid">
 
-        <div ng-show="model.error"
+    <h1>Profile</h1>
+
+    <div ng-show="model.error"
              class="alert alert-danger"
              role="alert">
             {{model.error}}
-        </div>
+    </div>
 
         <div ng-show="model.success"
              class="alert alert-success"
@@ -48,9 +49,12 @@
                        readonly>
             </div>
 
-            <div ng-show="model.emailerror" class="alert alert-danger" role="alert">
+            <div ng-show="model.emailerror"
+                 class="alert alert-danger"
+                 role="alert">
                 {{model.emailerror}}
             </div>
+
             <div class="form-group">
                 <label for="email">Email address</label>
                 <input type="email"
@@ -60,9 +64,12 @@
                        ng-model="model.user.email">
             </div>
 
-            <div ng-show="model.firstnameerror" class="alert alert-danger" role="alert">
+            <div ng-show="model.firstnameerror"
+                 class="alert alert-danger"
+                 role="alert">
                 {{model.firstnameerror}}
             </div>
+
             <div class="form-group">
                 <label for="first-name">First Name</label>
                 <input type="text"
@@ -72,9 +79,12 @@
                        ng-model="model.user.Firstname">
             </div>
 
-            <div ng-show="model.lastnameerror" class="alert alert-danger" role="alert">
+            <div ng-show="model.lastnameerror"
+                 class="alert alert-danger"
+                 role="alert">
                 {{model.lastnameerror}}
             </div>
+
             <div class="form-group">
                 <label for="last-name">Last Name</label>
                 <input type="text"
@@ -91,11 +101,16 @@
 
         <a class="btn btn-danger  btn-block"
            href="#/login">Logout</a>
+
+        <a class="btn btn-success btn-block"
+           ng-click="model.deleteUser(model.user)"
+           >Unsubscribe</a>
     </div>
 
 <nav class="navbar navbar-default navbar-fixed-bottom ">
     <div class="container-fluid">
-        <a class="navbar-text pull-right" href="profile.view.client.html">
+        <a class="navbar-text pull-right"
+           href="#/profile/{{model.user.userID}}">
             <span class="glyphicon glyphicon-user white"></span>
         </a>
     </div>

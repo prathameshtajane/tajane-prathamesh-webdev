@@ -6,15 +6,16 @@
         .module("WebAppMaker")
         .controller("pagelistController",pagelistController);
 
-        function pagelistController($routeParams,$location,PageService){
+        function pagelistController($routeParams,PageService)
+        {
             var vm = this;
             vm.userid = $routeParams['uid'];
             vm.websiteid = $routeParams['wid'];
 
-            function init() {
+            function init()
+            {
                 vm.pagelist=PageService.findPageByWebsiteId(vm.websiteid);
             }
             init();
-
         }
 }());

@@ -12,25 +12,29 @@
             vm.websiteid = $routeParams['wid'];
             vm.pageid = $routeParams['pid'];
 
-            vm.newpage={};
             vm.createPage=createPage;
 
-            function init() {
+            vm.newpage={};
+
+            function init()
+            {
                 vm.pagelist=PageService.findPageByWebsiteId(vm.websiteid);
             }
             init();
 
 
-            function createPage(websiteid,page){
+            function createPage(websiteid,page)
+            {
                 vm.pagecreatestat=PageService.createPage(websiteid,page);
-                if(vm.pagecreatestat ){
+                if(vm.pagecreatestat )
+                {
                     vm.pagelist=PageService.findPageByWebsiteId(vm.websiteid);
                     $location.url("/user/"+vm.userid+"/websites/"+vm.websiteid+"/page");
                 }
-                else{
+                else
+                {
                     vm.webcreatestat="Website creation unsuccessful";
                 }
             }
         }
-
 }());
