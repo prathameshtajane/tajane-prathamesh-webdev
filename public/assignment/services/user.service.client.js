@@ -6,7 +6,7 @@
         .module('WebAppMaker')
         .factory('UserService',userService);
     
-    function userService() {
+    function userService($http) {
 
         var users = [
             {_id: "123",
@@ -48,14 +48,7 @@
         return api;
         
         function findUserByCredentails(username,password){
-            for(var u in users){
-                if(users[u].username === username &&
-                        users[u].password === password)
-                {
-                    return users[u];
-                }
-            }
-            return null;
+            return $http.get("/api/user?username="+username+"&password="+password);
         }
 
         function createUser(username1,password1){
@@ -73,17 +66,20 @@
         }
 
         function findUserById(uid){
-            for(var usr in users){
+        return $http.get("/api/user/"+uid);
+            /*for(var usr in users){
                 var userInfo = users[usr];
                 if(users[usr]._id == uid){
                     return angular.copy(userInfo);
                 }
             }
-            return null;
+            return null;*/
         }
 
-        function updateUser(userid,user){
-            for(var usr in users){
+        function updateUser(userid,newUserInfo){
+
+             return $http.put("/api/user/"+userid,newUserInfo);
+            /*for(var usr in users){
                 if(userid === parseInt(users[usr]._id))
                 {
                     var selectedIndex = usr;
@@ -93,7 +89,7 @@
                     return angular.copy(users[usr]);
                 }
             }
-            return null;
+            return null;*/
         }
 
         function findUserByUserName(inp_username){
@@ -106,13 +102,14 @@
         }
 
         function deleteUser(userid){
-            for(var usr in users){
+            return $http.delete("/api/user/"+userid);
+            /*for(var usr in users){
                 if (parseInt(users[usr]._id) === parseInt(userid)){
                     var index_tobe_deleted=users.indexOf(users[usr]);
                     users.splice(index_tobe_deleted,1);
                     return true;
                 }
-            }
+            }*/
         }
 
     }
