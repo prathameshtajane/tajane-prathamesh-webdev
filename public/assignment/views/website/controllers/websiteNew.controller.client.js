@@ -16,23 +16,30 @@
 
             function init()
             {
-                vm.websiteslist=WebsiteService.findWebsitesByUser(vm.userid);
+                    WebsiteService
+                        .findWebsitesByUser(vm.userid)
+                        .success(function (websitelist) {
+                            vm.websiteslist=websitelist;
+                        })
+                        .error(function (err) {
+                            vm.webcreatestat="Website creation unsuccessful";
+                        })
             }
             init();
 
 
             function createWebsite(userid,website)
             {
-                vm.webcreatestat=WebsiteService.createWebsite(userid,website);
-                if(vm.webcreatestat )
-                {
-                    vm.websiteslist=WebsiteService.findWebsitesByUser(vm.userid);
-                    $location.url("/user/"+vm.userid+"/websites");
-                }
-                else
-                {
-                    vm.webcreatestat="Website creation unsuccessful";
-                }
+
+                WebsiteService
+                    .createWebsite(userid,website)
+                    .success(function (websitelist) {
+                        vm.websiteslist=websitelist;
+                        $location.url("/user/"+vm.userid+"/websites");
+                    })
+                    .error(function (err) {
+                        vm.webcreatestat="Website creation unsuccessful";
+                    })
             }
         }
 }());

@@ -20,7 +20,7 @@
                     var promise = UserService.findUserByCredentails(user.username, user.password);
 
                     promise.success(function (user) {
-                        if (user != null) {
+                        if (user != "") {
                             $location.url('/profile/' + user._id);
                         }
                         else {

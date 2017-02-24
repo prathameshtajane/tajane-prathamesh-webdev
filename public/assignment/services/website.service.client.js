@@ -3,7 +3,7 @@
         .module("WebAppMaker")
         .factory("WebsiteService",WebsiteService);
     
-    function WebsiteService() {
+    function WebsiteService($http) {
 
         var websites=[
             { _id: "123",
@@ -48,34 +48,39 @@
             return api;
             
             function createWebsite(userid,website){
-                website.developerId=userid;
+                return $http.post("/api/user/"+userid+"/website",website);
+                /*website.developerId=userid;
                 website._id=(new Date()).getTime();
                 websites.push(website);
-                return true;
+                return true;*/
             }
             
             function findWebsitesByUser(userid){
-                var websites_by_user=[];
+                return $http.get("/api/user/"+userid+"/website");
+                /*var websites_by_user=[];
                 for(var website in websites){
                     if(websites[website].developerId === userid){
                         websites_by_user.push(websites[website]);
                     }
                 }
-                return websites_by_user;
+                return websites_by_user;*/
             }
             
            function findWebsiteById(websiteid){
-                for(var website in websites)
+
+               return $http.get("/api/website/"+websiteid);
+                /*for(var website in websites)
                 {
                     if(parseInt(websites[website]._id) === parseInt(websiteid)){
                         return angular.copy(websites[website]);
                     }
                 }
-                return null;
+                return null;*/
             }
             
             function updateWebsite(websiteid,updatedwebsite) {
-                for(website in websites){
+                return $http.put("/api/website/"+websiteid,updatedwebsite);
+                /*for(website in websites){
                     if(websites[website]._id === websiteid)
                     {
                         var selectedIndex = websites.indexOf(websites[website]);
@@ -84,18 +89,19 @@
                 }
                 websites[selectedIndex].name = updatedwebsite.name;
                 websites[selectedIndex].description = updatedwebsite.description;
-                return true;
+                return true;*/
             }
             
             function deleteWebsite(websiteid){
-                for(website in websites) {
+               return $http.delete("/api/website/"+websiteid);
+                /*for(website in websites) {
                     if (websites[website]._id === websiteid) {
                         var selectedIndex1 = websites.indexOf(websites[website]);
                         break;
                     }
-                }
-                    websites.splice(selectedIndex1,1);
-                    return true;
+                }*/
+                    /*websites.splice(selectedIndex1,1);
+                    return true;*/
                     /*if(websites.splice(selectedIndex1,1) != typeof(undefined){
                     return true;
                     }

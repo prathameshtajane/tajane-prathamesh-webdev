@@ -8,7 +8,7 @@
     
     function userService($http) {
 
-        var users = [
+        /*var users = [
             {_id: "123",
                 username: "alice",
                 password: "alice",
@@ -35,7 +35,7 @@
                 password: "jannunzi",
                 firstName: "Jose",
                 lastName: "Annunzi",
-                email:"jose@gmail.com" }];
+                email:"jose@gmail.com" }];*/
 
         var api = {
             "findUserById" : findUserById,
@@ -51,18 +51,19 @@
             return $http.get("/api/user?username="+username+"&password="+password);
         }
 
-        function createUser(username1,password1){
-            for(var usr in users){
+        function createUser(newUserObj){
+            return $http.post("/api/user",newUserObj);
+            /*for(var usr in users){
               if(users[usr].username === username1 ){
                   return null;
               }
-            }
-            var tempuser={};
+            }*/
+            /*var tempuser={};
             tempuser.username=username1;
             tempuser.password=password1;
             tempuser._id=(new Date()).getTime();
             users.push(tempuser);
-            return tempuser;
+            return tempuser;*/
         }
 
         function findUserById(uid){
@@ -93,12 +94,13 @@
         }
 
         function findUserByUserName(inp_username){
-            for(var usr in users){
+           return $http.get("/api/user?username="+inp_username);
+            /*for(var usr in users){
                 if(users[usr].username === inp_username){
                     return angular.copy(users[usr]);
                 }
             }
-            return null;
+            return null*/
         }
 
         function deleteUser(userid){

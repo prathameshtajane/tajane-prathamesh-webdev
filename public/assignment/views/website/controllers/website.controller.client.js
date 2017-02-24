@@ -12,7 +12,11 @@
 
             function init()
             {
-                vm.websiteslist=WebsiteService.findWebsitesByUser(vm.userid);
+                    WebsiteService
+                        .findWebsitesByUser(vm.userid)
+                        .success(function (websites) {
+                            vm.websiteslist=websites;
+                            })
             }
             init();
 
