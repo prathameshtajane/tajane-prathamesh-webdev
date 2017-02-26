@@ -5,7 +5,7 @@
     
     function WebsiteService($http) {
 
-        var websites=[
+        /*var websites=[
             { _id: "123",
                 name: "Facebook",
                 developerId: "456",
@@ -34,7 +34,7 @@
             { _id: "789",
                 name: "Chess",
                 developerId: "234",
-                description: "Lorem" }];
+                description: "Lorem" }];*/
 
 
            var api={

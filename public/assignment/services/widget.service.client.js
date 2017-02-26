@@ -6,9 +6,9 @@
         .module("WebAppMaker")
         .service("WidgetService",WidgetService);
         
-        function WidgetService() {
+        function WidgetService($http) {
 
-            var widgets=[
+            /*var widgets=[
                 { "_id": "123","name":"Header", "widgetType": "HEADING", "pageId": "321", "size": 2, "text": "GIZMODO"},
                 { "_id": "234","name":"Header", "widgetType": "HEADING", "pageId": "321", "size": 4, "text": "Lorem ipsum"},
                 { "_id": "345","name":"Image", "widgetType": "IMAGE", "pageId": "321", "width": 100,"text": "Image",
@@ -18,7 +18,7 @@
                 { "_id": "678","name":"Youtube", "widgetType": "YOUTUBE", "pageId": "321", "width": 100,"text": "YTube",
                     "url": "https://youtu.be/AM2Ivdi9c4E" },
                 { "_id": "789","name":"HTML", "widgetType": "HTML", "pageId": "321", "text": "<p>Lorem ipsum</p>"}
-            ];
+            ];*/
 
             this.findAllWidgets=findAllWidgets;
             this.findWidgetById = findWidgetById;
@@ -33,27 +33,31 @@
 
 
             function findWidgetByPageId(pageid) {
-                var pageslist=[];
+                return $http.get("/api/page/"+pageid+"/widget");
+                /*var pageslist=[];
                 for(var num in widgets){
                     if(parseInt(widgets[num].pageId) === parseInt(pageid)){
                         pageslist.push(widgets[num]);
                     }
                 }
-                return pageslist;
+                return pageslist;*/
             }
 
 
             function findWidgetById(widgetId) {
-                for(var w in widgets) {
+                return $http.get("/api/widget/"+widgetId);
+                /*for(var w in widgets) {
                     if(parseInt(widgets[w]._id) === parseInt(widgetId)) {
                         return angular.copy(widgets[w]);
                     }
                 }
-                return null;
+                return null;*/
             }
 
             function UpdateWidget(widgetid,updatedwidget) {
-                for(num in widgets){
+                return $http.put("/api/widget/"+widgetid,updatedwidget);
+
+                /*for(num in widgets){
                     if(parseInt(widgets[num]._id) === parseInt(widgetid))
                     {
                         if(updatedwidget.widgetType == "HEADING"){
@@ -83,27 +87,32 @@
                         }
                     }
                 }
-                return null;
+                return null;*/
             }
 
             function deleteWidget(widgetid){
-                for(num in widgets){
+                return $http.delete("/api/widget/"+widgetid);
+                /*for(num in widgets){
                     if (widgets[num]._id === widgetid) {
                         var selectedIndex1 = widgets.indexOf(widgets[num]);
                         break;
                     }
                 }
                 widgets.splice(selectedIndex1,1);
-                return true;
+                return true;*/
             }
 
-            function createWidget(pageid,widget){
-                var new_widget={};
+            function createWidget(pageId,widget){
+                console.log(typeof widget);
+                widgetObj=[widget];
+                console.log(typeof widgetObj);
+                return $http.post("/api/page/"+pageId+"/widget",widgetObj);
+                /*var new_widget={};
                 new_widget.pageId=pageid;
                 new_widget.widgetType=widget.toString();
                 new_widget._id=(new Date()).getTime();
                 widgets.push(new_widget);
-                return new_widget;
+                return new_widget;*/
             }
 
         }

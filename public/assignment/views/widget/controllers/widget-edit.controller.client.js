@@ -20,7 +20,12 @@
 
         function init()
         {
-            vm.widget = WidgetService.findWidgetById(vm.widgetId);
+                WidgetService
+                    .findWidgetById(vm.widgetId)
+                    .success(function (widget) {
+                        vm.widget=widget;
+                        console.log(vm.widget);
+                    });
         }
         init();
 
@@ -31,14 +36,24 @@
 
         function update(updatedwidget)
         {
-            var UpdationFlag=WidgetService.UpdateWidget(vm.widgetId,updatedwidget);
-            $location.url('/user/'+vm.userId+'/websites/'+vm.websiteId+'/page/'+vm.pageId+'/widget')
+
+                WidgetService
+                    .UpdateWidget(vm.widgetId,updatedwidget)
+                    .success(function (updatedWidgetObj) {
+            $location.url('/user/'+vm.userId+'/websites/'+vm.websiteId+'/page/'+vm.pageId+'/widget');})
         }
 
         function deletewid()
         {
-            var DeletionFlag=WidgetService.deleteWidget(vm.widgetId);
-            $location.url('/user/'+vm.userId+'/websites/'+vm.websiteId+'/page/'+vm.pageId+'/widget')
+                WidgetService
+                    .deleteWidget(vm.widgetId)
+                    .success(function (StatusObj) {
+                        $location.url('/user/'+vm.userId+'/websites/'+vm.websiteId+'/page/'+vm.pageId+'/widget')
+                    })
+                    .error(function (errObj) {
+                        vm.errorStatus=errObj.error;
+                    })
+
         }
     }
 })();

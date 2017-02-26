@@ -6,7 +6,7 @@
         .module("WebAppMaker")
         .controller("pagelistController",pagelistController);
 
-        function pagelistController($routeParams,PageService)
+        function pagelistController($routeParams,PageService,$location)
         {
             var vm = this;
             vm.userid = $routeParams['uid'];
@@ -14,7 +14,20 @@
 
             function init()
             {
-                vm.pagelist=PageService.findPageByWebsiteId(vm.websiteid);
+                    PageService
+                        .findPageByWebsiteId(vm.websiteid)
+                        .success(function (listOfWebsites){
+                            vm.pagelist=listOfWebsites;
+                        })
+                        .error(function (err) {
+                            var answer=confirm(err.error);
+                            if(answer){
+                                $location.url("/user/"+vm.userid+"/websites/"+vm.websiteid+"/page/new");
+                            }
+                            else{
+                                $location.url("/user/"+vm.userid+"/websites")
+                            }
+                        })
             }
             init();
         }

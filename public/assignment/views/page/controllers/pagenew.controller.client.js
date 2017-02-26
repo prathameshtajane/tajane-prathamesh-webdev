@@ -18,23 +18,21 @@
 
             function init()
             {
-                vm.pagelist=PageService.findPageByWebsiteId(vm.websiteid);
+                /*vm.pagelist=PageService.findPageByWebsiteId(vm.websiteid);*/
             }
             init();
 
 
             function createPage(websiteid,page)
             {
-                vm.pagecreatestat=PageService.createPage(websiteid,page);
-                if(vm.pagecreatestat )
-                {
-                    vm.pagelist=PageService.findPageByWebsiteId(vm.websiteid);
-                    $location.url("/user/"+vm.userid+"/websites/"+vm.websiteid+"/page");
-                }
-                else
-                {
-                    vm.webcreatestat="Website creation unsuccessful";
-                }
+                    PageService
+                        .createPage(websiteid,page)
+                        .success(function (NewPageObj) {
+                            $location.url("/user/"+vm.userid+"/websites/"+NewPageObj.websiteId+"/page");
+                        })
+                        .error(function (err) {
+                            vm.webcreatestat=err.error;
+                        });
             }
         }
 }());

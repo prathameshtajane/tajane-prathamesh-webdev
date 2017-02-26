@@ -18,7 +18,11 @@
 
         function init()
         {
-            vm.widgets=WidgetService.findWidgetByPageId(vm.pageId);
+                WidgetService
+                    .findWidgetByPageId(vm.pageId)
+                    .success(function (pageListObj) {
+                        vm.widgets=pageListObj
+                    })
         }
         init();
 
