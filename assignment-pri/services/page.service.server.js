@@ -56,7 +56,6 @@ module.exports=function (app) {
         /*Validating newPageObj*/
          if(newPageObj){
          res.json(newPageObj);
-         console.log("Succesful:createPage");
          return;}
          else{
              res.status(404).send({error:"New Website Page creation unsuccessful"});
@@ -75,7 +74,6 @@ module.exports=function (app) {
         }
         if (pages_of_website.length > 0) {
             res.json(pages_of_website);
-            console.log("Succesful:findPageByWebsiteId");
             return;
         }
         else {
@@ -90,7 +88,6 @@ module.exports=function (app) {
          {
          if(parseInt(pages[num]._id) === parseInt(pageId)){
          res.json(pages[num]);
-         console.log("Succesful:findPageById");
          return;
          }
          }
@@ -115,7 +112,6 @@ module.exports=function (app) {
          if(pages[selectedIndex] != typeof undefined){
          /*res.send(pages[selectedIndex]);*/
          res.status(200).send({status: "Page Updated Succesfully."});
-        console.log("Succesful:updatePage");
          return;}
         else{
              res.status(404).send({error: "Page Updatation Failed"});
@@ -135,11 +131,10 @@ module.exports=function (app) {
         if(selectedIndex1 >= 0 && selectedIndex1 <= (pages.length-1)) {
             pages.splice(selectedIndex1, 1);
             res.status(200).send({status: "Page deleted Succesfully."});
-            console.log("Succesful:deletePage");
             return;}
         else{
             res.status(404).send({error: "Page Deletion Failed"});
             return;
         }
     }
-}
+};

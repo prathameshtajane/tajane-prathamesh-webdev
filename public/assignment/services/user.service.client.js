@@ -8,35 +8,6 @@
     
     function userService($http) {
 
-        /*var users = [
-            {_id: "123",
-                username: "alice",
-                password: "alice",
-                firstName: "Alice",
-                lastName: "Wonder",
-                email:"alice@gmail.com" },
-
-            {_id: "234",
-                username: "bob",
-                password: "bob",
-                firstName: "Bob",
-                lastName: "Marley",
-                email:"bob@gmail.com" },
-
-            {_id: "345",
-                username: "charly",
-                password: "charly",
-                firstName: "Charly",
-                lastName: "Garcia",
-                email:"charly@gmail.com"},
-
-            {_id: "456",
-                username: "jannunzi",
-                password: "jannunzi",
-                firstName: "Jose",
-                lastName: "Annunzi",
-                email:"jose@gmail.com" }];*/
-
         var api = {
             "findUserById" : findUserById,
             "findUserByCredentails" : findUserByCredentails,
@@ -53,65 +24,23 @@
 
         function createUser(newUserObj){
             return $http.post("/api/user",newUserObj);
-            /*for(var usr in users){
-              if(users[usr].username === username1 ){
-                  return null;
-              }
-            }*/
-            /*var tempuser={};
-            tempuser.username=username1;
-            tempuser.password=password1;
-            tempuser._id=(new Date()).getTime();
-            users.push(tempuser);
-            return tempuser;*/
         }
 
         function findUserById(uid){
         return $http.get("/api/user/"+uid);
-            /*for(var usr in users){
-                var userInfo = users[usr];
-                if(users[usr]._id == uid){
-                    return angular.copy(userInfo);
-                }
-            }
-            return null;*/
         }
 
         function updateUser(userid,newUserInfo){
 
              return $http.put("/api/user/"+userid,newUserInfo);
-            /*for(var usr in users){
-                if(userid === parseInt(users[usr]._id))
-                {
-                    var selectedIndex = usr;
-                    users[selectedIndex].email=user.email;
-                    users[selectedIndex].firstName=user.Firstname;
-                    users[selectedIndex].lastName=user.Lastname;
-                    return angular.copy(users[usr]);
-                }
-            }
-            return null;*/
         }
 
         function findUserByUserName(inp_username){
            return $http.get("/api/user?username="+inp_username);
-            /*for(var usr in users){
-                if(users[usr].username === inp_username){
-                    return angular.copy(users[usr]);
-                }
-            }
-            return null*/
         }
 
         function deleteUser(userid){
             return $http.delete("/api/user/"+userid);
-            /*for(var usr in users){
-                if (parseInt(users[usr]._id) === parseInt(userid)){
-                    var index_tobe_deleted=users.indexOf(users[usr]);
-                    users.splice(index_tobe_deleted,1);
-                    return true;
-                }
-            }*/
         }
 
     }

@@ -74,8 +74,12 @@
        }
 
        function deleteUser(userid){
-           var userDeletionFlag=UserService.deleteUser(userid.userID);
-           $location.url('/login');
+           /*var userDeletionFlag=UserService.deleteUser(userid.userID);*/
+           UserService
+               .deleteUser(userid.userID)
+               .success(function (userinfo) {
+                   $location.url('/login');
+               })
 
        }
 

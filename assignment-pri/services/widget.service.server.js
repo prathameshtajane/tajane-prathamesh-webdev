@@ -39,7 +39,6 @@ module.exports=function (app) {
         new_widget._id=(new Date()).getTime();
         widgets.push(new_widget);
         res.json(new_widget);
-        console.log("Succesful:createWidget");
     }
 
     function findWidgetById(req,res){
@@ -47,12 +46,10 @@ module.exports=function (app) {
 
         for(var w in widgets) {
             if(parseInt(widgets[w]._id) === parseInt(widgetId)) {
-                /*return angular.copy(widgets[w]);*/
                 res.json(widgets[w]);
                 return;
             }
         }
-        /*return null;*/
     }
 
     function deleteWidget(req,res){
@@ -65,7 +62,6 @@ module.exports=function (app) {
         if(selectedIndex1 >= 0 && selectedIndex1 <= (widgets.length-1)) {
             widgets.splice(selectedIndex1, 1);
             res.status(200).send({status: "Widget deleted Succesfully."});
-            console.log("Succesful:deleteWidget");
             return;}
         else{
             res.status(404).send({error: "Widget Deletion Failed"});
@@ -82,7 +78,6 @@ module.exports=function (app) {
             }
         }
         res.json(pageslist);
-        console.log("Succesful:findWidgetByPageId");
         return;
     }
 
@@ -98,7 +93,6 @@ module.exports=function (app) {
                     widgets[num].text=newWidgetInfo.text;
                     widgets[num].size=newWidgetInfo.size;
                     res.json(widgets[num]);
-                    console.log("Successful:UpdateWidget");
                     return;
                 }
                 if(newWidgetInfo.widgetType == "IMAGE"){
@@ -108,7 +102,6 @@ module.exports=function (app) {
                     console.log(widgets[num].url);
                     widgets[num].width=newWidgetInfo.width;
                     res.json(widgets[num]);
-                    console.log("Successful:UpdateWidget");
                     return;
                 }
                 if(newWidgetInfo.widgetType == "YOUTUBE"){
@@ -117,14 +110,12 @@ module.exports=function (app) {
                     widgets[num].url=newWidgetInfo.url;
                     widgets[num].width=newWidgetInfo.width;
                     res.json(widgets[num]);
-                    console.log("Successful:UpdateWidget");
                     return;
                 }
                 if(newWidgetInfo.widgetType == "HTML"){
                     widgets[num].name=newWidgetInfo.name;
                     widgets[num].text=newWidgetInfo.text;
                     res.json(widgets[num]);
-                    console.log("Successful:UpdateWidget");
                     return;
                 }
             }
@@ -135,7 +126,7 @@ module.exports=function (app) {
     }
 
     function uploadImage(req,res){
-        console.log("Reached:uploadImage");
+
         var widgetId      = req.body.widgetId;
         var width         = req.body.width;
         var pageId        = req.body.pageId;
@@ -153,10 +144,8 @@ module.exports=function (app) {
         var size          = myFile.size;
         var mimetype      = myFile.mimetype;
 
-        console.log(widgets);
-        console.log("After");
         widgets.push({ "_id": widgetId,"name":widgetName, "widgetType": "IMAGE", "pageId": pageId, "width": width, "text": widgetText, "url": "../../../../../uploads/"+filename});
-        console.log(widgets);
+
         res.redirect("../../assignment/index.html#/user/"+userId+"/websites/"+websiteId+"/page/"+pageId+"/widget");
     }
 
