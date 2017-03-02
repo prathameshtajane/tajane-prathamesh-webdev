@@ -2,11 +2,18 @@
  * Created by prathamesh on 2/25/17.
  */
 module.exports=function (app) {
+
+    var multer = require('multer');
+    var upload = multer({ dest: __dirname+'/../../public/uploads' });
+
     app.post("/api/page/:pageId/widget",createWidget);
     app.get("/api/page/:pageId/widget",findWidgetByPageId);
     app.get("/api/widget/:widgetId",findWidgetById);
     app.put("/api/widget/:widgetId",UpdateWidget);
     app.delete("/api/widget/:widgetId",deleteWidget);
+    app.post ("/api/upload", upload.single('myFile'),uploadImage);
+
+    var prefix = "../../../../../uploads/";
 
 
     var widgets=[
@@ -20,6 +27,8 @@ module.exports=function (app) {
             "url": "https://youtu.be/AM2Ivdi9c4E" },
         { "_id": "789","name":"HTML", "widgetType": "HTML", "pageId": "321", "text": "<p>Lorem ipsum</p>"}
     ];
+
+
 
     function createWidget(req,res){
         var pageId=req.params.pageId;
@@ -96,6 +105,7 @@ module.exports=function (app) {
                     widgets[num].name=newWidgetInfo.name;
                     widgets[num].text=newWidgetInfo.text;
                     widgets[num].url=newWidgetInfo.url;
+                    console.log(widgets[num].url);
                     widgets[num].width=newWidgetInfo.width;
                     res.json(widgets[num]);
                     console.log("Successful:UpdateWidget");
@@ -121,5 +131,33 @@ module.exports=function (app) {
         }
         res.status(404).send({error:"Widget Updation Failed"});
         return;
+
     }
+
+    function uploadImage(req,res){
+        console.log("Reached:uploadImage");
+        var widgetId      = req.body.widgetId;
+        var width         = req.body.width;
+        var pageId        = req.body.pageId;
+        var widgetName    = req.body.widgetName;
+        var widgetText    = req.body.widgetText;
+        var userId        = req.body.userId;
+        var websiteId     = req.body.websiteId;
+
+        var myFile        = req.file;
+
+        var originalname  = myFile.originalname; // file name on user's computer
+        var filename      = myFile.filename;     // new file name in upload folder
+        var path          = myFile.path;         // full path of uploaded file
+        var destination   = myFile.destination;  // folder where file is saved to
+        var size          = myFile.size;
+        var mimetype      = myFile.mimetype;
+
+        console.log(widgets);
+        console.log("After");
+        widgets.push({ "_id": widgetId,"name":widgetName, "widgetType": "IMAGE", "pageId": pageId, "width": width, "text": widgetText, "url": "../../../../../uploads/"+filename});
+        console.log(widgets);
+        res.redirect("../../assignment/index.html#/user/"+userId+"/websites/"+websiteId+"/page/"+pageId+"/widget");
+    }
+
 };

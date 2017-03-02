@@ -1,5 +1,17 @@
 <h2>IMAGE EDITOR</h2>
 
+<div ng-show="model.smessage"
+     class="alert alert-success"
+     role="alert">
+    {{model.smessage}}
+</div>
+
+<div ng-show="model.errmessage"
+     class="alert alert-success"
+     role="alert">
+    {{model.errmessage}}
+</div>
+
 <div class="choose-widget-youtube-layout-config">
     <label class="text-size-20px"
            for="widget_name"> Name </label>
@@ -39,13 +51,27 @@
 <div class="choose-widget-youtube-layout-config">
     <label class="text-size-20px" for="upload_file"> Upload </label>
 
-    <input class="form-control text-size-20px input-form-layout-config upload-input-file-layout-config"
-           type="file"
-           id="upload_file">
 </div>
 
 <div class="choose-widget-youtube-layout-config">
-    <button class="form-control btn-block btn-success delete-button-config">Upload Image</button>
+    <form action="/api/upload"
+          method="post"
+          enctype="multipart/form-data">
+        <input  name="myFile"
+                type="file"
+                class="form-control text-size-20px input-form-layout-config upload-input-file-layout-config"
+                id="upload_file"
+                ng-model="model.uploadedImgObj"/>
+        <input  name="width"    value="{{model.widget.width}}" style="display: none"/>
+        <input  name="widgetId" value="{{model.widget._id}}"   style="display: none"/>
+        <input  name="pageId" value="{{model.pageId }}"   style="display: none"/>
+        <input  name="widgetName" value="{{model.widget.name}}"   style="display: none"/>
+        <input  name="widgetText" value="{{model.widget.text}}"   style="display: none"/>
+        <input  name="userId" value="{{model.userId}}"   style="display: none"/>
+        <input  name="websiteId" value="{{model.websiteId}}"   style="display: none"/>
+    <button class="form-control btn-block btn-success delete-button-config"
+            type="submit">Upload Image</button>
+    </form>
 </div>
 
 <div class="choose-widget-youtube-layout-config container-bottom-padding">
