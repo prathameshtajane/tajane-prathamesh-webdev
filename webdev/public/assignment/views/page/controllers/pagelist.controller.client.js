@@ -6,15 +6,29 @@
         .module("WebAppMaker")
         .controller("pagelistController",pagelistController);
 
-        function pagelistController($routeParams,$location,PageService){
+        function pagelistController($routeParams,PageService,$location)
+        {
             var vm = this;
             vm.userid = $routeParams['uid'];
             vm.websiteid = $routeParams['wid'];
 
-            function init() {
-                vm.pagelist=PageService.findPageByWebsiteId(vm.websiteid);
+            function init()
+            {
+                    PageService
+                        .findPageByWebsiteId(vm.websiteid)
+                        .success(function (listOfWebsites){
+                            vm.pagelist=listOfWebsites;
+                        })
+                        .error(function (err) {
+                            var answer=confirm(err.error);
+                            if(answer){
+                                $location.url("/user/"+vm.userid+"/websites/"+vm.websiteid+"/page/new");
+                            }
+                            else{
+                                $location.url("/user/"+vm.userid+"/websites")
+                            }
+                        })
             }
             init();
-
         }
 }());

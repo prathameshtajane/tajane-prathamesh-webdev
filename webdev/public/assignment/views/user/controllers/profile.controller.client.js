@@ -9,22 +9,26 @@
     function profileController($routeParams,$location,UserService) {
 
         var vm = this;
-        vm.UpdateUserInfo = UpdateUserInfo;
         var userId = $routeParams['uid'];
 
+        vm.UpdateUserInfo = UpdateUserInfo;
+        vm.deleteUser = deleteUser;
 
         function init() {
+
         }
         init();
 
-        var storedUserInfo=UserService.findUserById(userId);
+        var promise=UserService.findUserById(userId);
+        promise.success(function (storedUserInfo) {
+            vm.user={};
+            vm.user.userID = storedUserInfo._id;
+            vm.user.username = storedUserInfo.username;
+            vm.user.email = storedUserInfo.email;
+            vm.user.Firstname = storedUserInfo.firstName;
+            vm.user.Lastname = storedUserInfo.lastName;
+        });
 
-        vm.user={};
-        vm.user.userID = storedUserInfo._id;
-        vm.user.username = storedUserInfo.username;
-        vm.user.email = storedUserInfo.email;
-        vm.user.Firstname = storedUserInfo.firstName;
-        vm.user.Lastname = storedUserInfo.lastName;
 
 
        /* if(typeof storedUserInfo.email === "undefined")
@@ -50,18 +54,29 @@
 
        function UpdateUserInfo(user)
        {
-        var UpdatedUserInfo=UserService.updateUser(parseInt(userId),user);
-        if(UpdatedUserInfo === null){
-            vm.error = "Failed to update recent request.";
-        }
-        else{
-            vm.user.userID = UpdatedUserInfo._id;
-            vm.user.username = UpdatedUserInfo.username;
-            vm.user.email = UpdatedUserInfo.email;
-            vm.user.Firstname = UpdatedUserInfo.firstName;
-            vm.user.Lastname = UpdatedUserInfo.lastName;
-            vm.success = "User Information Updation Succesfull";
-        }
+
+           /*var UpdatedUserInfo=UserService.updateUser(parseInt(userId),user);*/
+           UserService
+               .updateUser(parseInt(userId),user)
+               .success(function (UpdatedUserInfo) {
+                   if(UpdatedUserInfo === null){
+                       vm.error = "Failed to update recent request.";
+                   }
+                   else{
+                       vm.user.userID = UpdatedUserInfo._id;
+                       vm.user.username = UpdatedUserInfo.username;
+                       vm.user.email = UpdatedUserInfo.email;
+                       vm.user.Firstname = UpdatedUserInfo.firstName;
+                       vm.user.Lastname = UpdatedUserInfo.lastName;
+                       vm.success = "User Information Updation Succesfull";
+                   }
+               })
+       }
+
+       function deleteUser(userid){
+           var userDeletionFlag=UserService.deleteUser(userid.userID);
+           $location.url('/login');
+
        }
 
     }

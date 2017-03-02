@@ -6,14 +6,19 @@
         .module("WebAppMaker")
         .controller("websiteController",websiteController);
 
-        function websiteController($routeParams,$location,WebsiteService){
+        function websiteController($routeParams,WebsiteService){
             var vm = this;
             vm.userid = $routeParams['uid'];
 
-            function init() {
+            function init()
+            {
+                    WebsiteService
+                        .findWebsitesByUser(vm.userid)
+                        .success(function (websites) {
+                            vm.websiteslist=websites;
+                            })
             }
             init();
 
-            vm.websiteslist=WebsiteService.findWebsitesByUser(vm.userid);
         }
 }());

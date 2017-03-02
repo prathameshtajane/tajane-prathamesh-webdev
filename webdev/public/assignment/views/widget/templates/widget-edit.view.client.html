@@ -1,0 +1,45 @@
+<nav class="navbar navbar-default navbar-fixed-top background-color-blue">
+    <div class="container-fluid">
+        <a class="navbar-brand pull-left"
+           href="#/user/{{model.userId}}/websites/{{model.websiteId}}/page/{{model.pageId}}/widget/new">
+            <span class="glyphicon glyphicon-chevron-left white"></span>
+        </a>
+
+        <div class="navbar-brand white pt-brand-header-font-config">
+            Widgets Editor
+        </div>
+
+        <a class="navbar-brand pull-right"
+           href="#/user/{{model.userId}}/websites/{{model.websiteId}}/page/{{model.pageId}}/widget/new">
+            <span class="glyphicon glyphicon-plus pull-right white"></span>
+        </a>
+    </div>
+</nav>
+
+<div ng-show="model.errorStatus"
+     class="alert alert-success"
+     role="alert">
+    {{model.errorStatus}}
+</div>
+
+<div class="container-fluid"
+     ng-include="model.getEditorTemplateUrl(model.widget.widgetType)">
+</div>
+
+<nav class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container-fluid">
+
+        <a class="navbar-text pull-left">
+            <span class="glyphicon glyphicon-play white pt-play-config"></span>
+        </a>
+
+        <a class="navbar-text pull-left">
+            <span class="glyphicon glyphicon-eye-open white"></span>
+        </a>
+
+        <a class="navbar-text pull-right"
+           href="#/profile/{{model.userId}}">
+            <span class="glyphicon glyphicon-user white"></span>
+        </a>
+    </div>
+</nav>

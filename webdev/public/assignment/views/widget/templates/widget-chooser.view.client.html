@@ -1,77 +1,48 @@
 
 <nav class="navbar navbar-default navbar-fixed-top background-color-blue text-size-20px">
     <div class="container-fluid">
-        <a class="navbar-text pull-left text-size-20px" href="widget-list.view.client.html" >
+        <a class="navbar-text pull-left text-size-20px"
+           href="#/user/{{model.userId}}/websites/{{model.websiteId}}/page/{{model.pageId}}/widget" >
             <span class="glyphicon glyphicon-chevron-left white"></span>
         </a>
-        <!-- <div class="navbar-header"> -->
         <div class="navbar-brand white postion-config-brand">
             Choose Widget
         </div>
-        <!-- </div> -->
     </div>
 </nav>
 
 <div class="container-fluid ">
 
     <div class="container-fluid choose-widget-container-layout-config">
-        <a class="no-border a-margin-bottom text-size-20px" href="widget-heading.view.client.html">
+        <a class="no-border a-margin-bottom text-size-20px"
+           href=""
+           ng-click="model.createwidget('HEADING')">
             Header
         </a>
     </div>
 
-    <div class="container-fluid choose-widget-container-layout-config">
-        <a class="no-border a-margin-bottom text-size-20px" href="https://www.google.com/">
-            Label
-        </a>
-    </div>
-
     <div class="container-fluid choose-widget-container-layout-config ">
-        <a class="no-border a-margin-bottom text-size-20px" href="https://www.google.com/">
+        <a class="no-border a-margin-bottom text-size-20px"
+           href=""
+           ng-click="model.createwidget('HTML')">
             HTML
         </a>
     </div>
 
-    <div class="container-fluid choose-widget-container-layout-config">
-        <a class="no-border a-margin-bottom text-size-20px" href="https://www.google.com/">
-            Text-Input
-        </a>
-    </div>
-
-
-    <div class="container-fluid choose-widget-container-layout-config">
-        <a class="no-border a-margin-bottom text-size-20px" href="https://www.google.com/">
-            Link
-        </a>
-    </div>
 
     <div class="container-fluid choose-widget-container-layout-config ">
-        <a class="no-border a-margin-bottom text-size-20px" href="https://www.google.com/">
-            Button
-        </a>
-    </div>
-
-    <div class="container-fluid choose-widget-container-layout-config ">
-        <a class="no-border a-margin-bottom text-size-20px" href="widget-image.view.client.html">
+        <a class="no-border a-margin-bottom text-size-20px"
+           href=""
+           ng-click="model.createwidget('IMAGE')">
             Image
         </a>
     </div>
 
     <div class="container-fluid choose-widget-container-layout-config ">
-        <a class="no-border a-margin-bottom text-size-20px" href="widget-youtube.view.client.html">
+        <a class="no-border a-margin-bottom text-size-20px"
+           href=""
+           ng-click="model.createwidget('YOUTUBE')">
             YouTube
-        </a>
-    </div>
-
-    <div class="container-fluid choose-widget-container-layout-config ">
-        <a class="no-border a-margin-bottom text-size-20px" href="https://www.google.com/">
-            Data Table
-        </a>
-    </div>
-
-    <div class="container-fluid choose-widget-container-layout-config ">
-        <a class="no-border a-margin-bottom text-size-20px" href="https://www.google.com/">
-            Repeater
         </a>
     </div>
 
@@ -79,7 +50,8 @@
 
 <nav class="navbar navbar-default navbar-fixed-bottom text-size-20px">
     <div class="container-fluid">
-        <a class="navbar-text pull-right " href="../../views/user/templates/profile.view.client.html">
+        <a class="navbar-text pull-right "
+           href="#/profile/{{model.userId}}">
             <span class="glyphicon glyphicon-user white"></span>
         </a>
     </div>

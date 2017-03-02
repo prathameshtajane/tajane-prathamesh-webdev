@@ -89,7 +89,8 @@ iframe{
 }
 
 .choose-widget-youtube-layout-config{
-    padding-bottom: 33px;
+    /*padding-bottom: 33px;*/
+    padding-bottom: 15px;
 }
 
 .input-form-layout-config{
@@ -177,4 +178,45 @@ iframe{
 
 .pt-play-config{
 padding-right: 40px;
+}
+
+.pt-button-top-margin{
+    margin-top: 31px;
+}
+
+.pt-button-bottom-margin{
+    margin-bottom: -36px;
+}
+
+.pt-imgbutton-bottom-margin{
+    margin-bottom: 40px;
+}
+
+.pt-botton-unsubscribe-layout{
+    margin-bottom: 70px;
+}
+
+.pt-edit-website-buttons-config{
+    margin-bottom: -29px;
+    margin-top: -17px;
+}
+
+.pt-website-name-layout{
+    padding-top: 0px;
+}
+
+.pt-font23{
+    font-size: 23px;
+}
+
+.pt-top-padding-page-layout{
+    padding-top: 20px;
+}
+
+.pt-widget-editor-layout{
+    margin-bottom: 50px;
+}
+
+.pt-margin-bottom-website-new{
+    margin-bottom: -21px;
 }

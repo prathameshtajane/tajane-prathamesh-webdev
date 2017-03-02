@@ -17,14 +17,18 @@
             function login(user) {
                 if(user != undefined)
                 {
-                    var isUserPresent = UserService.findUserByCredentails(user.username, user.password);
+                    var promise = UserService.findUserByCredentails(user.username, user.password);
 
-                    if (isUserPresent != null) {
-                        $location.url('/profile/' + isUserPresent._id);
-                    }
-                    else {
-                        vm.error = 'User not found';
-                    }
+                    promise.success(function (user) {
+                        if (user != "") {
+                            $location.url('/profile/' + user._id);
+                        }
+                        else {
+                            vm.error = 'User not found';
+                        }
+
+                    })
+
                 }
                 else{
                     vm.error = 'Enter Username Password';

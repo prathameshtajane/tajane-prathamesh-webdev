@@ -10,35 +10,65 @@
             var vm = this;
             vm.userid = $routeParams['uid'];
             vm.websiteid = $routeParams['wid'];
+
             vm.updateWebsite=updateWebsite;
             vm.deleteWebsite=deleteWebsite;
 
-            function init() {
+            function init()
+            {
+                    WebsiteService
+                        .findWebsitesByUser(vm.userid)
+                        .success(function (websitelist) {
+                            vm.websiteslist=websitelist;
+                        });
+
+                    WebsiteService
+                        .findWebsiteById(vm.websiteid)
+                        .success(function (websitename) {
+                            vm.websitesEdit=websitename;
+                            vm.websiteName=angular.copy(vm.websitesEdit);
+                        });
+
             }
             init();
 
-            vm.websiteslist=WebsiteService.findWebsitesByUser(vm.userid);
-            vm.websitesEdit= WebsiteService.findWebsiteById(vm.websiteid);
-            vm.websiteName=angular.copy(vm.websitesEdit);
+            function updateWebsite()
+            {
+                    WebsiteService
+                        .updateWebsite(vm.websiteName._id, vm.websiteName)
+                        .success(function (newWebsiteList) {
+                        vm.WebsiteUpdationStatus = "Website Updated Succesfully";
+                            WebsiteService
+                                .findWebsitesByUser(vm.userid)
+                                .success(function (updatedListByUserID) {
+                                    vm.websiteslist=updatedListByUserID;
+                                })
+                        })
+                        .error(function (err){
+                            vm.WebsiteUpdationStatus = "Website Updation Failed";
+                        });
 
-            function updateWebsite() {
-                vm.status = WebsiteService.updateWebsite(vm.websiteName._id, vm.websiteName);
-                if (vm.status) {
-                    vm.WebsiteUpdationStatus = "Website Updated Succesfully";
+
+                /*if (vm.status)
+                {
+
                 }
-                else {
+                else
+                {
                     vm.WebsiteUpdationStatus = "Website Updation Failed";
-                }
+                }*/
             }
 
-            function deleteWebsite(){
-                vm.status = WebsiteService.deleteWebsite(vm.websiteName._id);
-                if (vm.status) {
-                    $location.url("/user/"+vm.userid+"/websites");
-                }
-                else {
-                    vm.WebsiteUpdationStatus = "Website Deletion Failed";
-                }
+            function deleteWebsite()
+            {
+                    WebsiteService
+                        .deleteWebsite(vm.websiteName._id)
+                        .success(function (newWebsitelist) {
+                            $location.url("/user/"+vm.userid+"/websites");
+            })          .error(function (err) {
+                            vm.WebsiteUpdationStatus = "Website Deletion Failed";
+            });
+
             }
         }
 }());

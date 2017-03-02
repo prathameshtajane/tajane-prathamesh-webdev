@@ -4,15 +4,22 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
 
-    <!--<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular-route.min.js"></script>-->
+    <script src="../js/jquery-3.1.1.min.js"></script>
+    <script src="../js/jquery-ui.min.js"></script>
+    <!--We are putting jQuery library before AngularJS to avoid conflicts with jQueryLite of AngularJS-->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular-route.min.js"></script>
 
-    <script src="../js/angular.js"></script>
-    <script src="../js/angular-route.js"></script>
+    <!--<script src="../js/angular.js"></script>
+    <script src="../js/angular-route.js"></script>-->
 
     <script src="app.js"></script>
     <script src="config.js"></script>
 
+     <!--directives-->
+    <script src="directives/wbdv-sortable.js"></script>
+
+    <!-- controllers -->
     <script src="views/user/controllers/login.controller.client.js"></script>
     <script src="views/user/controllers/register.controller.client.js"></script>
     <script src="views/user/controllers/profile.controller.client.js"></script>
@@ -25,17 +32,22 @@
     <script src="views/page/controllers/pagelist.controller.client.js"></script>
     <script src="views/page/controllers/pagenew.controller.client.js"></script>
 
+    <script src="views/widget/controllers/widget-list.controller.client.js"></script>
+    <script src="views/widget/controllers/widget-edit.controller.client.js"></script>
+    <script src="views/widget/controllers/widget-chooser.controller.client.js"></script>
 
+    <!-- services -->
     <script src="services/user.service.client.js"></script>
     <script src="services/website.service.client.js"></script>
     <script src="services/page.service.client.js"></script>
+    <script src="services/widget.service.client.js"></script>
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="UTF-8">
     <title>SinglePageApp</title>
 </head>
 <body>
-    <!--<h1>Index Page</h1>-->
+
     <div ng-view></div>
 
 </body>

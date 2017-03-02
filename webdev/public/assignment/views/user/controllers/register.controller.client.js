@@ -18,13 +18,27 @@
         function registerUser(user){
             if(user != undefined) {
                 if(user.password1 == user.password2) {
-                    var isValidUserName = UserService.createUser(user.username, user.password1);
+                    UserService
+                        .findUserByUserName(user.username)
+                        .success(function (user) {
+                        vm.error = "Unable to register this User";})
+                        .error(function (err) {
+                            /*$location.url('/profile/' + isValidUserName._id);*/
+                            vm.error = "Going ahead with the regitsration of new user";
+                            UserService
+                                .createUser(user)
+                                .success(function (newUserObj) {
+                                    $location.url('/profile/' + newUserObj._id);})
+                        });
+
+
+                    /*var isValidUserName = UserService.createUser(user.username, user.password1);
                     if (isValidUserName != null) {
                         $location.url('/profile/' + isValidUserName._id);
                     }
                     else {
                         vm.error = "Unable to register this User"
-                    }
+                    }*/
                 }
                 else{
                     vm.error="Password does not match.Cannot proceed."
@@ -38,5 +52,4 @@
         }
 
     }
-
 })();

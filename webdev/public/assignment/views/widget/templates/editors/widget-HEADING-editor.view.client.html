@@ -1,0 +1,31 @@
+
+<h2>HEADER EDITOR</h2>
+<label>Name</label>
+<input ng-model="model.widget.name"
+       class="form-control"/>
+
+<label>Text</label>
+<input ng-model="model.widget.text"
+       class="form-control"/>
+
+<label>Size</label>
+<select class="form-control"
+        ng-model="model.widget.size">
+    <option>1</option>
+    <option>2</option>
+    <option>3</option>
+    <option>4</option>
+    <option>5</option>
+    <option>6</option>
+</select>
+
+<div class="container-bottom-padding pt-button-top-margin">
+    <a class="form-control btn-block btn-success delete-button-config pt-text-align-center"
+       ng-click="model.update(model.widget)">Update</a>
+</div>
+
+<div class="container-bottom-padding">
+    <a class="form-control btn-block btn-danger delete-button-config pt-text-align-center"
+       ng-click="model.deletewid()">Delete</a>
+</div>
+
