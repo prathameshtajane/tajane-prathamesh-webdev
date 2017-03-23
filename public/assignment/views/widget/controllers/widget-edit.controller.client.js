@@ -31,6 +31,8 @@
 
         function getEditorTemplateUrl(type)
         {
+            console.log("Printing getEditorTemplateUrl from widget-edit.controller");
+            console.log(type);
             return 'views/widget/templates/editors/widget-'+type+'-editor.view.client.html';
         }
 

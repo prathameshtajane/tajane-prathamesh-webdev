@@ -18,9 +18,8 @@
                 if(user != undefined)
                 {
                     var promise = UserService.findUserByCredentails(user.username, user.password);
-
                     promise.success(function (user) {
-                        if (user != "") {
+                        if (user) {
                             $location.url('/profile/' + user._id);
                         }
                         else {
@@ -28,7 +27,9 @@
                         }
 
                     })
-
+                        .error(function (err) {
+                            vm.error = 'User not found';
+                        })
                 }
                 else{
                     vm.error = 'Enter Username Password';

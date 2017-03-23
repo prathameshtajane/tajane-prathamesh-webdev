@@ -1,7 +1,7 @@
 /**
  * Created by prathamesh on 2/25/17.
  */
-module.exports=function (app) {
+module.exports=function (app,model) {
 
     var multer = require('multer');
     var upload = multer({ dest: __dirname+'/../../public/uploads' });
@@ -15,6 +15,11 @@ module.exports=function (app) {
 
     var prefix = "../../../../../uploads/";
 
+
+    var userModel=model.userModel;
+    var websiteModel=model.websiteModel;
+    var pageModel=model.pageModel;
+    var widgetModel=model.widgetModel;
 
     var widgets=[
         { "_id": "123","name":"Header", "widgetType": "HEADING", "pageId": "321", "size": 2, "text": "GIZMODO"},
@@ -34,22 +39,58 @@ module.exports=function (app) {
         var pageId=req.params.pageId;
         var widgetType=req.body;
         var new_widget={};
-        new_widget.pageId=pageId;
-        new_widget.widgetType=widgetType[0].toString();
-        new_widget._id=(new Date()).getTime();
-        widgets.push(new_widget);
-        res.json(new_widget);
+        new_widget._pageId=pageId;
+        new_widget.name="HTML";
+        new_widget.text="TEXT";
+        new_widget.placeholder="1";
+        new_widget.description="Description";
+        new_widget.url="URL";
+        new_widget.width="width";
+        new_widget.height="height";
+        new_widget.rows=2;
+        new_widget.size=2;
+        new_widget.class="class";
+        new_widget.icon="icon";
+        new_widget.order=2;
+        new_widget.deletable=true;
+        new_widget.formatted=true;
+        new_widget.dateCreated=new Date();
+        new_widget.type=widgetType[0].toString();
+        /*new_widget._id=(new Date()).getTime();*/
+        widgetModel
+            .createWidget(pageId,new_widget)
+            .then(function (widget) {
+                    res.json(widget);
+                },
+                function (error) {
+                    res.sendStatus(500).send(error);
+                });
+
+        /*widgets.push(new_widget);
+        res.json(new_widget);*/
     }
 
     function findWidgetById(req,res){
         var widgetId=req.params.widgetId;
+        widgetModel
+            .findWidgetById(widgetId)
+            .then(function (widget) {
+                    if(widget){
+                        res.json(widget);
+                    }
+                    else{
+                        res.sendStatus(404);
+                    }},
+                function (error) {
+                    res.sendStatus(404);
+                });
 
-        for(var w in widgets) {
+        /*for(var w in widgets) {
             if(parseInt(widgets[w]._id) === parseInt(widgetId)) {
                 res.json(widgets[w]);
                 return;
             }
-        }
+        }*/
     }
 
     function deleteWidget(req,res){
@@ -71,14 +112,27 @@ module.exports=function (app) {
 
     function findWidgetByPageId(req,res){
         var pageId=req.params.pageId;
-        var pageslist=[];
+        widgetModel
+            .findAllWidgetsForPage(pageId)
+            .then(function (pages) {
+                    if(pages){
+                        res.json(pages);
+                    }
+                    else{
+                        res.sendStatus(404);
+                    }},
+                function (error) {
+                    res.sendStatus(404);
+                });
+
+        /*var pageslist=[];
         for(var num in widgets){
             if(parseInt(widgets[num].pageId) === parseInt(pageId)){
                 pageslist.push(widgets[num]);
             }
         }
         res.json(pageslist);
-        return;
+        return*/;
     }
 
     function UpdateWidget(req,res){

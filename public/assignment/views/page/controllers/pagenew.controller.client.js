@@ -28,7 +28,7 @@
                     PageService
                         .createPage(websiteid,page)
                         .success(function (NewPageObj) {
-                            $location.url("/user/"+vm.userid+"/websites/"+NewPageObj.websiteId+"/page");
+                            $location.url("/user/"+vm.userid+"/websites/"+NewPageObj._website+"/page");
                         })
                         .error(function (err) {
                             vm.webcreatestat=err.error;

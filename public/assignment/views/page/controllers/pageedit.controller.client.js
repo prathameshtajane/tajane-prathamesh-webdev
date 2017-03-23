@@ -22,9 +22,11 @@
                         .findPageById(vm.pageid)
                         .success(function (pageObj){
                             vm.pageName=pageObj;
+                            console.log("findPageById success in pageedit.controller.client");
                         })
                          .error(function (err) {
                              var answer=confirm(err.error);
+                             console.log("findPageById error in pageedit.controller.client");
                              if(answer){
                                  $location.url("/user/"+vm.userid+"/websites/"+vm.websiteid+"/page/");
                              }
@@ -43,7 +45,8 @@
                         PageService
                             .updatePage(vm.pageName._id, vm.pageName)
                             .success(function (pageUpdationStatus) {
-                                vm.PageUpdationStatus = pageUpdationStatus.status;
+                                vm.PageUpdationStatus = "Page edit succesfull";
+                                /*vm.PageUpdationStatus = pageUpdationStatus.status;*/
                             })
                             .error(function (err) {
                                 vm.PageUpdationStatus = err.error;

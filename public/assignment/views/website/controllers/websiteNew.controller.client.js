@@ -30,9 +30,11 @@
 
             function createWebsite(userid,website)
             {
+                var websitewithdevid=website;
+                websitewithdevid.developerId=vm.userid;
 
                 WebsiteService
-                    .createWebsite(userid,website)
+                    .createWebsite(userid,websitewithdevid)
                     .success(function (websitelist) {
                         vm.websiteslist=websitelist;
                         $location.url("/user/"+vm.userid+"/websites");

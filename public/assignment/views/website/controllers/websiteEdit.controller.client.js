@@ -64,7 +64,7 @@
                     WebsiteService
                         .deleteWebsite(vm.websiteName._id)
                         .success(function (newWebsitelist) {
-                            $location.url("/user/"+vm.userid+"/websites");
+                            $location.url("/user/"+ vm.userid +"/websites");
             })          .error(function (err) {
                             vm.WebsiteUpdationStatus = "Website Deletion Failed";
             });

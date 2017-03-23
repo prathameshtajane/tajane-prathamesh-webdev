@@ -20,7 +20,7 @@
         init();
 
         var promise=UserService.findUserById(userId);
-        promise.success(function (storedUserInfo) {
+        promise.success(function (storedUserInfo){
             vm.user={};
             vm.user.userID = storedUserInfo._id;
             vm.user.username = storedUserInfo.username;

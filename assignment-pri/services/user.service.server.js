@@ -1,13 +1,17 @@
-module.exports=function (app) {
+module.exports=function (app,model) {
     app.post("/api/user",createUser);
     app.get("/api/user",findUser);
     app.get("/api/user/:userId",findUserById);
     app.put("/api/user/:userId",updateUser);
     app.delete("/api/user/:userId",deleteUser);
 
+    var userModel=model.userModel;
+    var websiteModel=model.websiteModel;
+    var pageModel=model.pageModel;
+    var widgetModel=model.widgetModel;
 
 
-    var users = [
+    /*var users = [
         {_id: "123",
             username: "alice",
             password: "alice",
@@ -34,19 +38,23 @@ module.exports=function (app) {
             password: "jannunzi",
             firstName: "Jose",
             lastName: "Annunzi",
-            email:"jose@gmail.com" }];
+            email:"jose@gmail.com" }];*/
 
 
     function createUser(req,res){
         var newUserInfo=req.body;
-        console.log(newUserInfo);
+
         var tempuser={};
         tempuser.username=newUserInfo.username;
         tempuser.password=newUserInfo.password1;
-        tempuser._id=(new Date()).getTime();
-        users.push(tempuser);
-        res.json(tempuser);
-        return;
+        userModel
+            .createUser(tempuser)
+            .then(function (user) {
+                res.json(user);
+            },
+            function (error) {
+                res.sendStatus(500).send(error);
+            });
     }
 
     function findUser(req,res){
@@ -62,39 +70,56 @@ module.exports=function (app) {
     }
 
     function findUserByUsername(req,res) {
-        var user = users.find(function (u) {
-           return u.username === req.query.username;
-        });
-        if(user){
-            res.json(user);
-        }
-        else{
-            res.sendStatus(404);
-        }
+        var username = req.query.username;
+        userModel
+            .findUserByUsername(username)
+            .then(function (user) {
+                if(user){
+                    if(user.length == 0){
+                        res.sendStatus(404);
+                    }
+                    else{
+                        res.json(user);
+                    }
+                }
+                else{
+                    res.sendStatus(404);
+                }},
+                function (error) {
+                    res.sendStatus(404);
+                });
     }
 
     function updateUser(req,res){
-        var userid=req.params.userId;
+        var userid=req.body.userID;
         var newUserInfo=req.body;
-        for(var usr in users){
-            if(parseInt(userid) === parseInt(users[usr]._id))
-            {
-                var selectedIndex = usr;
-                users[selectedIndex].email=newUserInfo.email;
-                users[selectedIndex].firstName=newUserInfo.Firstname;
-                users[selectedIndex].lastName=newUserInfo.Lastname;
-                res.json(users[usr]);
-                return;
-            }
-        }
+        console.log("Calling updateUser user.service.server.js");
+        userModel
+            .updateUser(userid,newUserInfo)
+            .then(function (user) {
+                    res.json(user);
+                    /*res.sendStatus(200);*/
+                },
+                function (err) {
+                    res.sendStatus(200);
+                });
     }
 
     function findUserById(req,res){
         var userid=req.params.userId;
-        var user = users.find(function (user){
-            return user._id == userid;
-        });
-        res.json(user);
+        userModel
+            .findUserById(userid)
+            .then(function (user) {
+                    if(user){
+                        res.json(user);
+                    }
+                    else{
+                        res.sendStatus(404);
+                    }},
+                function (error) {
+                    res.sendStatus(404);
+                });
+
     }
 
 
@@ -102,22 +127,35 @@ module.exports=function (app) {
         var queryUserName=req.query.username;
         var queryUserPassword=req.query.password;
 
-        var user=users.find(function(user){
-           return user.password==queryUserPassword && user.username==queryUserName
-        });
+        userModel
+            .findUserByCredentails(queryUserName,queryUserPassword)
+            .then(function (user) {
+                    if(user){
+                        if(user.length == 0){
+                            res.sendStatus(404);
+                        }
+                        else{
+                            res.json(user);
+                        }
+                    }
+                    else{
+                        res.sendStatus(404);
+                    }},
+                function (error) {
+                    res.sendStatus(404);
+                });
 
-        res.send(user);
     }
 
     function deleteUser(req,res) {
         var userid = req.params.userId;
-        for(var usr in users){
-            if (parseInt(users[usr]._id) === parseInt(userid)){
-                var index_tobe_deleted=users.indexOf(users[usr]);
-                users.splice(index_tobe_deleted,1);
-                break;
-            }
-        }
-        res.sendStatus(200);
+        userModel
+            .deleteUser(userid)
+            .then(function (user) {
+                    res.sendStatus(200);
+            },
+            function (err) {
+                res.sendStatus(200);
+            });
     }
 };

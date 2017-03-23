@@ -2,14 +2,21 @@
  * Created by prathamesh on 2/24/17.
  */
 
-module.exports=function (app) {
+module.exports=function (app,model) {
     app.post("/api/website/:websiteId/page",createPage);
     app.get("/api/website/:websiteId/page",findPageByWebsiteId);
     app.get("/api/page/:pageId",findPageById);
     app.put("/api/page/:pageId",updatePage);
     app.delete("/api/page/:pageId",deletePage);
 
-    var pages= [
+
+
+    var userModel=model.userModel;
+    var websiteModel=model.websiteModel;
+    var pageModel=model.pageModel;
+    var widgetModel=model.widgetModel;
+
+    /*var pages= [
         { _id: "321",
             name: "GPost 1",
             websiteId: "456",
@@ -39,34 +46,68 @@ module.exports=function (app) {
             name: "Chess 3",
             websiteId: "789",
             title: "Lorem" }
-    ];
+    ];*/
 
     function createPage(req,res) {
-        var websiteId=req.params.websiteId;
+        /*var websiteId=req.params.websiteId;
         var newPageInfo=req.body;
-        /*Creating an empty newPageObj in which all the parameters of a page will be updated*/
+        /!*Creating an empty newPageObj in which all the parameters of a page will be updated*!/
         newPageObj={};
         newPageObj.websiteId=websiteId;
         newPageObj.name=newPageInfo.name;
         newPageObj.title=newPageInfo.title;
         newPageObj._id=(new Date()).getTime();
-        /*Pushing newPageObj onto the existing pages array*/
+        /!*Pushing newPageObj onto the existing pages array*!/
         pages.push(newPageObj);
 
-        /*Validating newPageObj*/
+        /!*Validating newPageObj*!/
          if(newPageObj){
          res.json(newPageObj);
          return;}
          else{
              res.status(404).send({error:"New Website Page creation unsuccessful"});
              return;
-         }
+         }*/
 
-    };
+        var websiteId=req.params.websiteId;
+        var newPageInfo1=req.body;
+        console.log("createPage from page.service.server");
+        console.log(newPageInfo1);
+        NewPageInfo={};
+        NewPageInfo._website=newPageInfo1.websiteId;
+        /*NewWebsiteInfo._id=(new Date()).getTime();*/
+        NewPageInfo.description=newPageInfo1.description;
+        NewPageInfo.name=newPageInfo1.name;
+        NewPageInfo.title=newPageInfo1.title;
+        NewPageInfo.widgets=[];
+        NewPageInfo.dateCreated=new Date();
+        pageModel
+            .createPage(websiteId,NewPageInfo)
+            .then(function (page) {
+                    console.log("returned page promise page object");
+                    console.log(page);
+                    res.json(page);
+                },
+                function (error) {
+                    res.sendStatus(500).send(error);
+                });
+        /*websites.push(NewWebsiteInfo);
+         res.json(websites);*/
+        return;
+
+    }
 
     function findPageByWebsiteId(req,res){
-        var websiteId = req.params.websiteId;
-        var pages_of_website = [];
+        var websiteid=req.params.websiteId;
+        pageModel
+            .findAllPagesForWebsite(websiteid)
+            .then(function (pages){
+                    res.json(pages);
+                },
+                function (error) {
+                    res.sendStatus(500).send(error);
+                });
+        /*var pages_of_website = [];
         for (var num in pages) {
             if (parseInt(pages[num].websiteId) === parseInt(websiteId)) {
                 pages_of_website.push(pages[num]);
@@ -79,12 +120,26 @@ module.exports=function (app) {
         else {
             res.status(404).send({error: "No pages to display for website.Do you want to create one?"})
             return;
-        };
+        };*/
     }
 
     function findPageById(req,res) {
-        var pageId=req.params.pageId;
-        for(var num in pages)
+        var pageid=req.params.pageId;
+        pageModel
+            .findPageId(pageid)
+            .then(function (page) {
+                    if(page){
+                        res.json(page);
+                    }
+                    else{
+                        res.sendStatus(404);
+                    }},
+                function (error) {
+                    res.sendStatus(404).send({error: "Page Not Found"});
+                });
+
+
+        /*for(var num in pages)
          {
          if(parseInt(pages[num]._id) === parseInt(pageId)){
          res.json(pages[num]);
@@ -92,14 +147,29 @@ module.exports=function (app) {
          }
          }
         res.status(404).send({error: "Page Not Found"});
-        return;
+        return;*/
 
     }
 
     function updatePage(req,res) {
         var pageId=req.params.pageId;
         var updatedPageInfo=req.body;
+        pageModel
+            .updatePage(pageId,updatedPageInfo)
+            .then(function (page) {
+                    if(page){
+                        res.json(page);
+                    }
+                    else{
+                        res.sendStatus(404);
+                    }},
+                function (error) {
+                    res.sendStatus(404);
+                });
+        return;
 
+
+/*
         for(num in pages){
          if(parseInt(pages[num]._id) === parseInt(pageId))
          {
@@ -110,19 +180,28 @@ module.exports=function (app) {
          pages[selectedIndex].name = updatedPageInfo.name;
          pages[selectedIndex].title = updatedPageInfo.title;
          if(pages[selectedIndex] != typeof undefined){
-         /*res.send(pages[selectedIndex]);*/
+         /!*res.send(pages[selectedIndex]);*!/
          res.status(200).send({status: "Page Updated Succesfully."});
          return;}
         else{
              res.status(404).send({error: "Page Updatation Failed"});
              return;
-         }
+         }*/
     }
 
     function deletePage(req,res){
         var pageId=req.params.pageId;
+        pageModel
+            .deletePage(pageId)
+            .then(function (page) {
+                    res.sendStatus(200);
+                },
+                function (err) {
+                    res.sendStatus(200);
+                });
+        return;
 
-        for(num in pages) {
+        /*for(num in pages) {
             if (parseInt(pages[num]._id) === parseInt(pageId)){
                 var selectedIndex1 = pages.indexOf(pages[num]);
                 break;
@@ -135,6 +214,6 @@ module.exports=function (app) {
         else{
             res.status(404).send({error: "Page Deletion Failed"});
             return;
-        }
+        }*/
     }
 };
