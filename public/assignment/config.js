@@ -89,6 +89,12 @@
                 templateUrl: 'views/widget/templates/widget-edit.view.client.html',
                 controller: "WidgetEditController",
                 controllerAs: "model"
+            })
+
+            .when("/user/:uid/website/:wid/page/:pid/widget/:wgid/flicker", {
+                templateUrl: 'views/widget/templates/widget-flicker-search.view.client.html',
+                controller:"WidgetFlickerController",
+                controllerAs: "model"
             });
 
 

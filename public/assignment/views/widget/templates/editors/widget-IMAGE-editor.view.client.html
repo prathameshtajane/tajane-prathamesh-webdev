@@ -53,6 +53,7 @@
 
 </div>
 
+
 <div class="choose-widget-youtube-layout-config">
     <form action="/api/upload"
           method="post"
@@ -79,6 +80,11 @@
        href=""
        ng-click="model.update(model.widget)">
         Update Image URL</a>
+</div>
+
+<div>
+    <a class="form-control btn-block btn-primary delete-button-config pt-text-align-center"
+       href="#/user/{{model.widget.userId}}/website/{{model.widget.websiteId}}/page/{{model.widget.pageId}}/widget/{{model.widget._id}}/flicker">Search Images</a>
 </div>
 
 <div class="choose-widget-youtube-layout-config container-bottom-padding">

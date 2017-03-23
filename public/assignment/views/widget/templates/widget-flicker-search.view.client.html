@@ -1,0 +1,33 @@
+
+<nav class="navbar navbar-default navbar-fixed-top background-color-blue text-size-20px">
+    <div class="container-fluid">
+        <a class="navbar-text pull-left text-size-20px"
+           href="#/user/{{model.userId}}/websites/{{model.websiteId}}/page/{{model.pageId}}/widget" >
+            <span class="glyphicon glyphicon-chevron-left white"></span>
+        </a>
+        <div class="navbar-brand white postion-config-brand">
+            Flicker Search
+        </div>
+    </div>
+</nav>
+
+
+<div class="row container-fluid flickr-search">
+    <div class="input-group ">
+        <input ng-model="searchText" type="text" class="form-control">
+        <span class="input-group-btn">
+            <a ng-click="model.searchPhotos(searchText)" class="btn btn-default " type="button">
+                <span class="glyphicon glyphicon-search"></span>
+            </a>
+        </span>
+    </div>
+</div>
+
+<nav class="navbar navbar-default navbar-fixed-bottom text-size-20px">
+    <div class="container-fluid">
+        <a class="navbar-text pull-right "
+           href="#/profile/{{model.userId}}">
+            <span class="glyphicon glyphicon-user white"></span>
+        </a>
+    </div>
+</nav>
