@@ -1,0 +1,310 @@
+
+/*.navbar-default{
+    height: 60px;
+}
+
+
+#navbar-properties{
+    background-color: rgba(0,0,0,0);
+    border: 0;
+    box-shadow: none;
+    z-index: 999;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-transition: background .5s ease-in-out, opacity .5s ease;
+    -moz-transition: background .5s ease-in-out, opacity .5s ease;
+    transition: background .5s ease-in-out, opacity .5s ease;
+    font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 20px;
+    color: white;
+    text-transform: uppercase;
+    margin-right: 15px;
+    padding-bottom: 15px;
+
+
+}
+
+#navbar-properties.container {
+    padding-top: 25px;
+    padding-bottom: 25px;
+    -webkit-transition: padding-top .5s ease, padding-bottom .5s ease;
+    -moz-transition: padding-top .5s ease, padding-bottom .5s ease;
+    transition: padding-top .5s ease, padding-top .5s ease, padding-bottom .5s ease;
+    margin-right: 15px;
+}
+
+
+#navbar-properties.affix {
+    top: 0;
+    padding-right: 15px;
+    min-width: 100%;
+    background-color: black;
+    opacity: 0.9;
+    -webkit-transition: background .5s ease-in-out, opacity .5s ease;
+    -moz-transition: background .5s ease-in-out, opacity .5s ease;
+    transition: background .5s ease-in-out, opacity .5s ease;
+
+}*/
+
+@media screen and (max-width: 767px){
+    #wrapwrap {
+        padding-top: 50px;
+    }
+    .navbar-fixed-top {
+        z-index: 999;
+    }
+}
+
+
+video{
+    margin: 0px;
+    padding: 0px;
+    width:100%;
+    height:100%;
+}
+
+.video-container {
+    position: relative;
+}
+video {
+    height: auto;
+    vertical-align: middle;
+    width: 100%;
+}
+.overlay-desc {
+    background: rgba(0,0,0,0);
+    position: absolute;
+    top: 0; right: 0; bottom:0; left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.pt-font-video{
+    color: white;
+    font-family: 'Nobile', sans-serif;
+    font-size: 9vw;
+    text-align: center;
+}
+
+/*.navbar-font-layout{
+    font-size: 20px;
+    letter-spacing: 1px;
+    !*color: white;*!
+}
+
+.nav>li>a{
+  color: white;
+}
+
+#navbar-properties>li>a:focus, #navbar-properties>li>a:hover {
+    text-decoration: underline;
+    background-color: rgba(0,0,0,0);
+}
+
+a.navbar-brand{
+    color: white;
+    font-size: 20px;
+    margin-top: 20px;
+}
+
+.navbar-brand:focus, .navbar-brand:hover {
+    text-decoration: underline;
+    color: navajowhite;
+}
+
+.navbar-collapse{
+    margin-top: 20px;
+    outline:none;
+}*/
+
+.profile-image {
+    position: static;
+    margin: 0 auto 30px;
+    text-align: center;
+    top:40%;
+    bottom: 60%;
+    z-index: 998;
+}
+
+.profile-image {
+    width: 26em !important;
+    height: 26em !important;
+    border: 4px solid white;
+    border-radius: 50%;
+}
+
+.profile-image {
+    width: 120px;
+    height: 120px;
+    position: absolute;
+    left: 30px;
+    border-radius: 50%;
+}
+
+
+.work-organisation-image{
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    margin-top: 60px;
+}
+.section {
+    background: url("/personal-website-implementation/misc/images/bg2.jpg");
+    -moz-background-image: url("/personal-website-implementation/misc/images/bg2.jpg");
+    -o-background-image: url("/personal-website-implementation/misc/images/bg2.jpg");
+    -webkit-box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.14);
+    -moz-box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.14);
+    box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.14);
+    padding: 45px;
+    margin-bottom: 45px;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    -ms-border-radius: 2px;
+    -o-border-radius: 2px;
+    border-radius: 2px;
+    -moz-background-clip: padding;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+    margin-top: -20px;
+}
+
+.about-me-class{
+    margin-left: 92px;
+    margin-right: 92px;
+}
+
+.about-me-class>h1{
+    font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    text-transform: uppercase;
+    font-weight: 700;
+    padding-bottom: 25px;
+    text-align: center
+}
+
+.about-me-text{
+    font-family: "Roboto Slab", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    overflow-x: hidden;
+    font-size: 18px;
+    line-height: 22px;
+    margin-bottom: 15px;
+}
+
+.about-workex-text{
+    font-family: "Roboto Slab", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    overflow-x: hidden;
+    font-size: 14px;
+    line-height: 22px;
+    margin-bottom: 5px;
+}
+
+#workex-text>li{
+    padding-bottom: 0px;
+}
+
+.about-fa-text{
+    font-family: "Roboto Slab", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    line-height: 22px;
+    font-weight: 700;
+}
+.about-me-text>ul>li{
+    padding-bottom: 18px;
+}
+
+.fa-inverse {
+    color: #ffffff;
+}
+
+.fa-stack>.text-primary{
+    color: darkviolet;
+}
+
+.time {
+    color: #777;
+    margin-bottom: 15px;
+}
+body {
+    font-family: "Roboto Slab", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    overflow-x: hidden;
+    background-color: gray !important;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+}
+
+.work-location{
+    color: lightslategray;
+    left:0;
+    padding-bottom: 30px;
+}
+
+.centered-text{
+    text-align: center;
+}
+
+
+html {
+    height: 100%;
+    margin: 0;
+}
+
+.bg {
+    /* The image used */
+    background-image: url("../../misc/images/frontImage.jpg");
+
+    /* Full height */
+    height: 100%;
+
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+
+.content-a {
+    width:100%;
+    height:100%;
+    overflow:hidden;
+}
+.content-a {
+    display:table;
+}
+
+.content-b {
+    display:table-cell;
+    position:relative;
+    vertical-align:middle;
+    text-align:center;
+}
+
+/*.navbar-top-padding-0{
+    padding-top: 0px !important;
+}*/
+
+.profile-image-layout{
+    display:table-cell;
+    position:relative;
+    vertical-align:middle;
+    text-align:center;
+}
+
+.name-font-layout{
+    font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    text-transform: uppercase;
+    font-size: 50px;
+    line-height: 40px;
+    font-weight: 700;
+    margin-left: 2em;
+}
+
+.basic-info-paragraph{
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    text-transform: uppercase;
+    font-size: 25px;
+    line-height: 40px;
+    font-weight: 300;
+    margin-left: 3.6em;
+}

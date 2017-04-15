@@ -38,7 +38,8 @@
 
         function update(updatedwidget)
         {
-
+                console.log("Printing updatedwidget from widget-eidt.controller.client.js");
+                console.log(updatedwidget);
                 WidgetService
                     .UpdateWidget(vm.widgetId,updatedwidget)
                     .success(function (updatedWidgetObj) {

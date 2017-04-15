@@ -26,8 +26,9 @@
                 <span class="glyphicon glyphicon-align-justify"></span>
             </div>
 
-            <div ng-switch="widget.widgetType">
-                <div ng-switch-when="HEADING">
+            <div ng-switch=widget.type>
+                <div ng-switch-when='HEADING'>
+                    {{widget.text}}
                 <ng-include src ="'views/widget/templates/widget-HEADER.view.client.html'"></ng-include>
                 </div>
 

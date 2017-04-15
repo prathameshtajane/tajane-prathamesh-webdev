@@ -2,16 +2,25 @@
 <html lang="en" ng-app="personalWebsite">
 <head>
     <meta charset="UTF-8">
-    <title>Resume</title>
+    <title>HomePage</title>
+
+     <!--jQuery dependency-->
+    <script src="../public/js/jquery.js"></script>
+    <script src="../public/js/jquery-ui.js"></script>
 
     <!-- Stylesheets -->
-    <!--<link href="../public/assignment/css/style2.css" rel="stylesheet">-->
     <link href="style.css" rel="stylesheet">
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../public/js/bootstrap.min.js" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet">
+
     <link href='http://fonts.googleapis.com/css?family=Nobile:700,400' rel='stylesheet' type='text/css'>
 
 
+    <!-- Angular dependency
+    <script src="../configuration/js/angular.js"></script>
+    <script src="../configuration/js/angular-route.js"></script>
+
+    <script src="app.js"></script>-->
 
     <!-- Custom Fonts -->
     <!--<link href="font/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">-->
@@ -51,11 +60,13 @@
     </div><!-- /.container-fluid -->
 </nav>
 
+<!--<div class="bg"></div>-->
+
 <div class="bg">
     <div class="content-a">
         <div class="content-b">
             <img class="profile-image profile-image-layout"
-                 src="prathamesh-tajane.jpg"
+                 src="misc/images/prathamesh-tajane.jpg"
                  alt="Prathamesh Tajane"
                  style="text-align: center">
             <h1 class="name name-font-layout">Prathamesh Tajane</h1>
@@ -64,6 +75,7 @@
         </div>
     </div>
 </div>
+
 
         <div class="container-fluid section">
             <div class="about-me-class">
@@ -137,7 +149,7 @@
             <div class="container-fluid text-center">
                 <div>
                     <img class="work-organisation-image"
-                         src="NSE_Logo.jpg"
+                         src="misc/images/NSE_Logo.jpg"
                          alt="Prathamesh Tajane">
                     <h2 class="title">
                         <span id="role"></span>
@@ -181,10 +193,10 @@
     <div class="about-me-class">
         <h1 style="text-align: center">education</h1>
         <!--<div class="row">-->
-          <div class="col-sm-6 col-xs-12 text-center" >
-              <h3 class="degree">BE Information Technology</h3>
+          <div class="col-sm-6 col-xs-12" >
+              <h3 class="degree">MS Computer Science</h3>
               <div class="university">
-                  Mumbai University
+                  Northeastern University
               </div>
               <em>
                   College of Computer and Information Science
@@ -207,7 +219,7 @@
                   </div>
               </div>
         </div>
-            <div class="col-sm-6 col-xs-12 text-center">
+            <div class="col-sm-6 col-xs-12">
                 <h3 class="degree">MS Computer Science</h3>
                 <div class="university">
                     Northeastern University
@@ -233,9 +245,8 @@
                     </div>
                 </div>
             </div>
+    <!--</div>-->
 </div>
-
 </div>
-
 </body>
 </html>

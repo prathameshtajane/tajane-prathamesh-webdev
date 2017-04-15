@@ -21,7 +21,9 @@
                 WidgetService
                     .findWidgetByPageId(vm.pageId)
                     .success(function (pageListObj) {
-                        vm.widgets=pageListObj
+                        vm.widgets=pageListObj;
+                        console.log("Printing Array widgets as per page");
+                        console.log(pageListObj);
                     })
         }
         init();
